@@ -3,19 +3,19 @@ This is a employee system written by react , redux ,etc
 
 ## Database Structure
 > Employee structure 
-
+``` bash
   "First_Name" : "xx",
   "Last_Name" : "xx",
   "Gender" : "M",
   "Birth" : "YYYY-MM-DD",
   "Address" : "XX",
   "Phone" : NumberLong(111111111111)
-
+```
 > User structure
-
+``` bash
   "User_Name" : "evan.zou",
   "Password" : "1"
-
+```
 ## Build Setup
 
 ``` bash
