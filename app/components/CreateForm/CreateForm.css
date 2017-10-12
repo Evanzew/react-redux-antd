@@ -1,0 +1,28 @@
+.glyphicon {
+  top: 0 !important;
+}
+
+.alert-padding {
+  padding: 6px 15px !important;
+}
+
+.form-control-feedback {
+  right: 15px !important;
+}
+
+.datetime-picker {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 0 !important;
+}
+
+.div-absolute {
+  top: 0;
+  bottom: 0;
+  left: 39px;
+  right: 0;
+  z-index: 100;
+  position: absolute;
+}

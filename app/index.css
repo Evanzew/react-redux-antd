@@ -1,0 +1,63 @@
+body {
+  font: 14px 'Century Gothic', Futura, sans-serif;
+  margin: 20px;
+}
+
+ol,
+ul {
+  padding-left: 30px;
+}
+
+.game-success {
+  color: #8bc34a !important;
+}
+
+.feet-li {
+  color: #707070;
+  font-size: 13px;
+  line-height: 2;
+  list-style: none;
+  padding: 0 !important;
+}
+
+.feet-link {
+  color: #707070;
+}
+
+.info-list {
+  padding: 0 !important;
+  color: #707070;
+  font-size: 12px;
+}
+
+@media (max-width: 767px) {
+  .smline {
+    width: 100%;
+    text-align: center;
+    float: left;
+    color: #707070;
+  }
+}
+
+.strline {
+  border-right: 1px solid #707070;
+}
+
+.btn-group .btn {
+  position: relative;
+  float: left;
+}
+
+.display-line {
+  display: inline-block;
+}
+
+.btn-group div:last-child .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btn-group div:first-child .btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}

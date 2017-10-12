@@ -1,0 +1,67 @@
+.login-container {
+  text-align: center;
+}
+
+.login-form-div {
+  border-radius: 6px;
+  border: 1px solid #cccccc;
+  text-align: center;
+}
+
+.login-header {
+  margin: 28px 0 10px 0;
+}
+
+.login-h3 {
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 3%;
+}
+
+.login-img {
+  width: 100%;
+}
+
+.cas-login-input {
+  height: 34px;
+  background-color: white;
+  font-size: 15px;
+  border-radius: 3px;
+  border: 1px solid rgb(204, 204, 204);
+  padding: 6px 12px 6px 12px;
+  margin: 0 30px 30px 30px;
+  width: 74%;
+}
+
+.login-login {
+  border-color: rgb(53, 126, 189);
+  color: rgb(255, 255, 255);
+  background-color: rgb(66, 139, 202);
+  margin: 0px 60px 30px 0;
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 4px 14px;
+  border: 1px solid transparent;
+}
+
+.login-reset {
+  border-color: rgb(53, 126, 189);
+  color: rgb(255, 255, 255);
+  background-color: rgb(66, 139, 202);
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 4px 14px;
+  border: 1px solid transparent;
+  margin-bottom: 30px;
+}
+
+.xs-margin {
+  margin-top: 1.6%;
+}
+
+@media (max-width: 767px) {
+  .xs-margin {
+    margin-bottom: 15% !important;
+    margin-top: 15% !important;
+  }
+}

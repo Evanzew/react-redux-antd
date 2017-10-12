@@ -1,0 +1,122 @@
+{
+  "name": "reactredux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node_modules/.bin/nodemon --exec better-npm-run startdev",
+    "test": "mocha \"specs/**/*@(.js)\" --compilers js:babel-core/register",
+    "clean": "rimraf dist",
+    "buildserver": "rimraf serverDist && babel server -d serverDist -s --presets es2015,stage-3",
+    "startprod": "rimraf dist && better-npm-run build:server:prod && better-npm-run build:web:prod && better-npm-run start:prod"
+  },
+  "betterScripts": {
+    "build:server:prod": {
+      "command": "webpack --config webpack.config/server.config.js --progress --colors",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "build:web:prod": {
+      "command": "webpack --config webpack.config/web.prod.config.js --progress --colors",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "start:prod": {
+      "command": "node dist/server.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "startdev": {
+      "command": "babel-node server/bin/server.js --presets es2015,stage-3",
+      "env": {
+        "NODE_ENV": "DEV"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wssjq198913/AngularES6.git"
+  },
+  "keywords": [
+    "Rreact",
+    "Redux",
+    "ES6"
+  ],
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "~1.17.1",
+    "bootstrap-datetimepicker": "0.0.7",
+    "cookie-parser": "~1.4.3",
+    "cookie-session": "^1.3.0",
+    "csurf": "^1.9.0",
+    "debug": "~2.6.3",
+    "ejs": "~2.5.6",
+    "express": "~4.15.2",
+    "express-session": "^1.15.4",
+    "isomorphic-fetch": "^2.2.1",
+    "morgan": "~1.8.1",
+    "react": "^15.6.1",
+    "react-bootstrap-date-picker": "^5.1.0",
+    "react-bootstrap-datetimepicker": "0.0.22",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.15.6",
+    "serve-favicon": "~2.4.2",
+    "webpack-dev-middleware": "^1.11.0",
+    "webpack-hot-middleware": "^2.18.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.5.1",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^6.2.2",
+    "babel-plugin-dynamic-import-webpack": "^1.0.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "better-npm-run": "0.0.15",
+    "bootstrap": "^3.3.7",
+    "bootstrap-validator": "^0.11.9",
+    "chai": "^4.1.1",
+    "cross-env": "^5.0.1",
+    "css-loader": "^0.28.4",
+    "enzyme": "^2.9.1",
+    "eslint": "^4.2.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-react": "^7.1.0",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "html-loader": "^0.4.5",
+    "html-webpack-harddisk-plugin": "^0.1.0",
+    "html-webpack-plugin": "^2.29.0",
+    "img-loader": "^2.0.0",
+    "jquery": "^3.2.1",
+    "mocha": "^3.5.0",
+    "mongodb": "^2.2.31",
+    "node-sass": "^3.13.1",
+    "nodemon": "^1.11.0",
+    "open-browser-webpack-plugin": "0.0.5",
+    "raw-loader": "^0.5.1",
+    "react-bootstrap": "^0.31.2",
+    "react-router-bootstrap": "^0.24.4",
+    "redux-form": "^7.0.3",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "toastr": "^2.1.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "url-loader": "^0.5.9",
+    "webpack": "^2.7.0",
+    "webpack-browser-plugin": "^1.0.20",
+    "webpack-dev-server": "^2.5.1"
+  }
+}

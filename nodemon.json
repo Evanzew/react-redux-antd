@@ -1,0 +1,9 @@
+{
+    "verbose": true,
+    "ignore": [
+        "app/",
+        "package.json",
+        "nodemon.json",
+        "specs/"
+    ]
+}
