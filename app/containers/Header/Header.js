@@ -12,6 +12,7 @@ class Header extends Component {
       <HeaderComponent
         userName={this.props.userName}
         logoutClick={this.props.logoutClick}
+        resetList={this.props.resetList}
       />
     );
   }

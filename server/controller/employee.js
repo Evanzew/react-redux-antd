@@ -18,6 +18,7 @@ module.exports = {
       }
       var voList = [
         '_id',
+        'id',
         'First_Name',
         'Last_Name',
         'Gender',
@@ -38,6 +39,7 @@ module.exports = {
     db.findData('Employee', data, function(err, data) {
       var voList = [
         '_id',
+        'id',
         'First_Name',
         'Last_Name',
         'Gender',

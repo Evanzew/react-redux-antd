@@ -38,18 +38,21 @@ class CreateForm extends Component {
         value: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
         formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
       });
-
-      $('#date-picker-popover-0 td').on('click', function() {
-        window.setTimeout(() => {
-          $('#Birth').validator('validate');
-        }, 10);
-      });
     };
     $(function() {
       $('#example-datepicker_group input:first-child').attr({
         'data-error': 'Sorry,Birth is invalid',
         pattern:
-          '^(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29)$'
+          '^(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29)$',
+        name: 'Birth'
+      });
+      $('#example-datepicker_group input:first-child').on('click', function() {
+        $('#date-picker-popover-0 td').unbind('click');
+        $('#date-picker-popover-0 td').on('click', function() {
+          window.setTimeout(() => {
+            $('#Birth').validator('validate');
+          }, 10);
+        });
       });
       $('#validateForm')
         .validator()
@@ -177,7 +180,7 @@ class CreateForm extends Component {
                     id="example-datepicker"
                     value={this.state.value}
                     onChange={handleChange}
-                    name="Birth"
+                    dateFormat="YYYY-MM-DD"
                     required
                   />
                 </InputGroup>
@@ -192,7 +195,7 @@ class CreateForm extends Component {
             <Col md={6}>
               <Alert bsStyle="info" className="alert-padding">
                 <b>Attention:</b>
-                You should select bitrh.
+                You should select bitrh or enter date like: YYYY-MM-DD.
               </Alert>
             </Col>
           </Row>
@@ -275,9 +278,11 @@ class CreateForm extends Component {
                   bsStyle="success"
                   onClick={e => {
                     e.preventDefault();
+                    var data = $('#validateForm').serialize();
                     this.setState({ showModal: false });
-                    this.props.createEmployee($('#validateForm').serialize());
+                    this.props.createEmployee(data);
                     $('#validateForm')[0].reset();
+                    $('#Birth').validator('validate');
                     $('#gender').val('');
                     toastr.success('Employee Successfully Created!', 'Success');
                   }}

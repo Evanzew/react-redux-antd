@@ -37,7 +37,11 @@ class DeleteButton extends Component {
                 onClick={e => {
                   e.preventDefault();
                   this.setState({ showModal: false });
-                  this.props.deleteClick(this.props.id);
+                  this.props.deleteClick(
+                    this.props.id,
+                    this.props.index,
+                    this.props.employee
+                  );
                   toastr.error('Employee Successfully Deleted!', 'Deleted');
                 }}
               >
@@ -56,7 +60,9 @@ class DeleteButton extends Component {
 
 DeleteButton.propTypes = {
   deleteClick: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  employee: PropTypes.array.isRequired,
+  index: PropTypes.number.isRequired
 };
 
 export default DeleteButton;

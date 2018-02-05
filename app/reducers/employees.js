@@ -22,7 +22,7 @@ let initialEmployee = {
   employee: [],
   allEmployee: [],
   lastDeleteId: 0,
-  newEmployee: {},
+  newEmployee: [],
   searchJSON: {}
 };
 
@@ -96,10 +96,23 @@ export default function employees(state = initialEmployee, action) {
         employee: concatList(action.id, state.allEmployee).slice(
           (state.pageNation.index - 1) * state.pageNation.pageCount,
           state.pageNation.index * state.pageNation.pageCount
-        )
+        ),
+        pageNation: {
+          ...state.pageNation,
+          page: Math.ceil(
+            (state.allEmployee.length - 1) / state.pageNation.pageCount
+          )
+        }
       };
     case CREATE_EMPLOYEE:
-      return { ...state, newEmployee: action.data };
+      return {
+        ...state,
+        newEmployee: state.newEmployee.splice(
+          0,
+          state.newEmployee.length,
+          action.data
+        )
+      };
     case SORT_BY_FN:
       return {
         ...state,

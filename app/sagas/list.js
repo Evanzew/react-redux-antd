@@ -8,6 +8,7 @@ import {
 export function* lsitAsync() {
   try {
     let result = yield call(fetchRequest, '/api/v1/employees', 'GET');
+
     yield put(receiveEmployeeSuccess(result.data));
   } catch (error) {
     console.log(error);

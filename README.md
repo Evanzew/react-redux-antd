@@ -6,7 +6,7 @@ This is a employee system written by react , redux ,etc
 
 > Employee structure
 
-``` bash
+```bash
   "First_Name" : "xx",
   "Last_Name" : "xx",
   "Gender" : "M",
@@ -17,36 +17,35 @@ This is a employee system written by react , redux ,etc
 
 > User structure
 
-``` bash
+```bash
   "User_Name" : "evan.zou",
   "Password" : "1"
 ```
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 
 # serve with hot reload at localhost:8080
 npm start
-
 ```
 
 ## Demo Preview
 
->Home Page Preview
+> Home Page Preview
 
-![alt text](/app/assets/preview-home.jpg "Home page preview")
+![alt text](/app/assets/preview-home.jpg 'Home page preview')
 
->Create Page Preview
+> Create Page Preview
 
-![alt text](/app/assets/preview-new.jpg "Create page preview")
+![alt text](/app/assets/preview-new.jpg 'Create page preview')
 
->Login Page Preview
+> Login Page Preview
 
-![alt text](/app/assets/preview-login.jpg "Login page preview")
+![alt text](/app/assets/preview-login.jpg 'Login page preview')
 
->Update Employee priview
+> Update Employee priview
 
-![alt text](/app/assets/preview-update.jpg "Update page preview")
+![alt text](/app/assets/preview-update.jpg 'Update page preview')

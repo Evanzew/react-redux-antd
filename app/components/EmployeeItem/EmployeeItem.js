@@ -88,7 +88,6 @@ class EmployeeItem extends Component {
             bsSize="medium"
             items={this.props.pages}
             activePage={this.props.index}
-            activePage={this.state.activePage}
             onSelect={eventKey => {
               handleSelect(eventKey);
               this.props.changeIndex(eventKey);
