@@ -1,68 +1,70 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+// import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Menu, Icon } from 'antd';
+const SubMenu = Menu.SubMenu;
+// const MenuItemGroup = Menu.ItemGroup;
 import './Header.css';
-import { LinkContainer } from 'react-router-bootstrap';
-export default class Header extends Component {
+import { Link } from 'react-router-dom';
+import { Layout } from 'antd';
+const { Header } = Layout;
+// import { LinkContainer } from 'react-router-bootstrap';
+export default class HeaderComponent extends Component {
   constructor() {
     super();
+    this.state = {
+      current: 'List'
+    };
   }
+
   render() {
+    const handleClick = e => {
+      console.log('click ', e);
+      this.setState({
+        current: e.key
+      });
+    };
     return (
-      <Navbar className="container-fill">
-        <Navbar.Header>
-          <Navbar.Brand>
-            <LinkContainer to="/">
-              <NavItem>
-                <span className="logo" />
-              </NavItem>
-            </LinkContainer>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <LinkContainer to="/" className="left-line">
-              <NavItem eventKey={1}>
-                <b>List</b>
-              </NavItem>
-            </LinkContainer>
-          </Nav>
-          <Nav pullRight>
-            {this.props.userName == '' ? (
-              <LinkContainer to="/login">
-                <NavItem eventKey={3}>
-                  <b>Log In</b>
-                </NavItem>
-              </LinkContainer>
-            ) : (
-              <NavDropdown
-                eventKey={3}
-                title={this.props.userName}
-                id="basic-nav-dropdown"
-                className="left-line"
-              >
-                <MenuItem eventKey={3.1} onClick={this.props.logoutClick}>
-                  <b>Logout</b>
-                </MenuItem>
-              </NavDropdown>
-            )}
-          </Nav>
-          <Nav pullRight>
-            <LinkContainer to="/new" className="left-line">
-              <NavItem eventKey={2}>
-                <b>New</b>
-              </NavItem>
-            </LinkContainer>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <Header>
+        <div className="logo" />
+        <Menu
+          onClick={handleClick}
+          selectedKeys={[this.state.current]}
+          mode="horizontal"
+          style={{ lineHeight: '64px' }}
+        >
+          <Menu.Item key="List">
+            <Link to="/">List</Link>
+          </Menu.Item>
+          <Menu.Item key="New">
+            <Link to="/new">New</Link>
+          </Menu.Item>
+          {this.props.userName == '' ? (
+            <Menu.Item key="login">
+              <Link to="/login">Log In</Link>
+            </Menu.Item>
+          ) : (
+            <SubMenu
+              title={
+                <span>
+                  <Icon type="user" />
+                  {this.props.userName}
+                </span>
+              }
+            >
+              <Menu.Item key="logout" onClick={this.props.logoutClick}>
+                LougOut
+              </Menu.Item>
+            </SubMenu>
+          )}
+        </Menu>
+      </Header>
     );
   }
 }
 
-Header.propTypes = {
+HeaderComponent.propTypes = {
   userName: PropTypes.string.isRequired,
   logoutClick: PropTypes.func.isRequired
 };

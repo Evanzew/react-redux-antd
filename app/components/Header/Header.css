@@ -7,14 +7,18 @@ li {
 }
 
 .logo {
-  display: inline-block;
+  float: left;
   width: 156px;
   height: 37px;
   background: url('../../assets/logosm.png');
   margin-top: 12px !important;
   padding-left: 38px;
 }
-
+.ant-layout-header {
+  padding: 0px 24px 24px;
+  background: #f0f2f5;
+  margin-bottom: 2px;
+}
 @media (max-width: 1050px) {
   .logo {
     margin-top: -7px !important;
