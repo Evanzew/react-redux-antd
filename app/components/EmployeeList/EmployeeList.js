@@ -18,10 +18,10 @@ export default class EmployeeList extends Component {
   }
   render() {
     return (
-      <Layout className="layout">
-        <Header />
-        <Layout style={{ padding: '0 24px 24px', maxHeight: 600 }}>
-          <LeftMenu />
+      <Layout>
+        <Header current={'List'} />
+        <Layout style={{ padding: '0 24px 24px' }}>
+          <LeftMenu openKey={'List'} selectKey={'All'} />
           <Layout style={{ padding: '0 24px 24px' }} className="container">
             <NavTip title={'EmployeeList'} />
             <SearchBar />

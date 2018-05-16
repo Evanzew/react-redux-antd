@@ -30,18 +30,15 @@ export default class HeaderComponent extends Component {
         <div className="logo" />
         <Menu
           onClick={handleClick}
-          selectedKeys={[this.state.current]}
+          selectedKeys={[this.props.current]}
           mode="horizontal"
           style={{ lineHeight: '64px' }}
         >
           <Menu.Item key="List">
             <Link to="/">List</Link>
           </Menu.Item>
-          <Menu.Item key="New">
-            <Link to="/new">New</Link>
-          </Menu.Item>
           {this.props.userName == '' ? (
-            <Menu.Item key="login">
+            <Menu.Item key="Login" className="pull-right">
               <Link to="/login">Log In</Link>
             </Menu.Item>
           ) : (
@@ -52,12 +49,20 @@ export default class HeaderComponent extends Component {
                   {this.props.userName}
                 </span>
               }
+              className="pull-right"
             >
-              <Menu.Item key="logout" onClick={this.props.logoutClick}>
+              <Menu.Item
+                key="Logout"
+                className="text-center"
+                onClick={this.props.logoutClick}
+              >
                 LougOut
               </Menu.Item>
             </SubMenu>
           )}
+          <Menu.Item key="New" className="pull-right">
+            <Link to="/new">New</Link>
+          </Menu.Item>
         </Menu>
       </Header>
     );

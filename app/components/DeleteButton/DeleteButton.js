@@ -1,58 +1,39 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Modal } from 'react-bootstrap';
 import './DeleteButton.css';
 import * as toastr from 'toastr';
 import 'toastr/build/toastr.css';
+import { Popconfirm, Button } from 'antd';
 
-class DeleteButton extends Component {
+export default class DeleteButton extends Component {
   constructor(props) {
     super(props);
-    this.state = { showModal: false };
   }
   render() {
-    const close = () => {
-      this.setState({ showModal: false });
-    };
-    const open = () => {
-      this.setState({ showModal: true });
-    };
+    function confirm() {
+      toastr.error('Employee Successfully Deleted!', 'Deleted');
+    }
+    const text =
+      'Please confirm whether you really want to delete this employee!!';
     return (
-      <div className="display-line">
-        <Button bsStyle="danger" onClick={open}>
-          Delete
-        </Button>
-        <div>
-          <Modal show={this.state.showModal} onHide={close}>
-            <Modal.Header closeButton>
-              <Modal.Title className="modal-title text-warning">
-                Attention
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body className="text-danger">
-              Please confirm whether you really want to delete this employee!!
-            </Modal.Body>
-            <Modal.Footer>
-              <Button
-                onClick={e => {
-                  e.preventDefault();
-                  this.setState({ showModal: false });
-                  this.props.deleteClick(
-                    this.props.id,
-                    this.props.index,
-                    this.props.employee
-                  );
-                  toastr.error('Employee Successfully Deleted!', 'Deleted');
-                }}
-              >
-                Delete
-              </Button>
-              <Button bsStyle="danger" onClick={close}>
-                Close
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
+      <div style={{ display: 'inline-block' }} key={this.props.index}>
+        <Popconfirm
+          placement="topLeft"
+          title={text}
+          onConfirm={e => {
+            e.preventDefault();
+            this.props.deleteClick(
+              this.props.id,
+              this.props.index,
+              this.props.employee
+            );
+            confirm();
+          }}
+          okText="Yes"
+          cancelText="No"
+        >
+          <Button type="danger">Delete</Button>
+        </Popconfirm>
       </div>
     );
   }
@@ -64,5 +45,3 @@ DeleteButton.propTypes = {
   employee: PropTypes.array.isRequired,
   index: PropTypes.number.isRequired
 };
-
-export default DeleteButton;

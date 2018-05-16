@@ -16,7 +16,7 @@ li {
 }
 .ant-layout-header {
   padding: 0px 24px 24px;
-  background: #f0f2f5;
+  background: #fff;
   margin-bottom: 2px;
 }
 @media (max-width: 1050px) {
@@ -24,7 +24,12 @@ li {
     margin-top: -7px !important;
   }
 }
-
+.pull-right {
+  float: right;
+}
+.text-center {
+  text-align: center;
+}
 .mycourse-margin {
   margin-left: 10px;
 }

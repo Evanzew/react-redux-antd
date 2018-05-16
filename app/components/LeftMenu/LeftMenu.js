@@ -2,17 +2,19 @@ import { Layout, Menu, Icon } from 'antd';
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 export default class LeftMenu extends Component {
   constructor() {
     super();
   }
+
   render() {
     return (
-      <Sider width={200} style={{ background: '#fff' }}>
+      <Sider width={200} style={{ background: '#fff', maxHeight: 600 }}>
         <Menu
           mode="inline"
-          defaultSelectedKeys={['1']}
-          defaultOpenKeys={['List']}
+          defaultSelectedKeys={[this.props.selectKey]}
+          defaultOpenKeys={[this.props.openKey]}
           style={{ height: '100%', borderRight: 0 }}
         >
           <SubMenu
@@ -23,7 +25,9 @@ export default class LeftMenu extends Component {
               </span>
             }
           >
-            <Menu.Item key="1">All Employees</Menu.Item>
+            <Menu.Item key="All">
+              <Link to="/">All Employees</Link>
+            </Menu.Item>
           </SubMenu>
           <SubMenu
             key="Action"
@@ -33,7 +37,9 @@ export default class LeftMenu extends Component {
               </span>
             }
           >
-            <Menu.Item key="2">Add Employee</Menu.Item>
+            <Menu.Item key="New">
+              <Link to="/new">Add Employee</Link>
+            </Menu.Item>
           </SubMenu>
         </Menu>
       </Sider>

@@ -13,6 +13,7 @@ class Header extends Component {
         userName={this.props.userName}
         logoutClick={this.props.logoutClick}
         resetList={this.props.resetList}
+        current={this.props.current}
       />
     );
   }
