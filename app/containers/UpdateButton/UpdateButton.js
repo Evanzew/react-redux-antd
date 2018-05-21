@@ -20,15 +20,7 @@ class UpdateButton extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     updateEmployee: listData => {
-      var data = listData.split('&');
-      var json = {};
-      for (var i = 0; i < data.length; i++) {
-        var list = data[i].split('=');
-        json[list[0]] = list[1];
-      }
-      JSON.stringify(json);
-      console.log(json);
-      dispatch(updateEmployee(json));
+      dispatch(updateEmployee(listData));
     }
   };
 };

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import $ from 'jquery';
 import 'toastr/build/toastr.css';
 import UpdateModal from '../UpdateModal/UpdateModal';
 import { Button } from 'antd';
@@ -8,18 +7,28 @@ import { Button } from 'antd';
 class UpdateButton extends Component {
   constructor(props) {
     super(props);
-    this.state = { showModal: false };
+    this.state = { visible: false, confirmLoading: false };
   }
   render() {
-    const close = () => {
-      this.setState({ showModal: false });
+    const handleOk = values => {
+      this.setState({
+        confirmLoading: true
+      });
+      window.setTimeout(() => {
+        this.setState({
+          visible: false,
+          confirmLoading: false
+        });
+        this.props.updateEmployee(values); 
+      }, 2000);
+    };
+    const handleCancel = () => {
+      this.setState({ visible: false });
+      console.log(false);
     };
 
     const open = () => {
-      this.setState({ showModal: true });
-      window.setTimeout(() => {
-        $('#validateForm').validator();
-      }, 10);
+      this.setState({ visible: true });
     };
 
     return (
@@ -29,10 +38,11 @@ class UpdateButton extends Component {
         </Button>
         <div>
           <UpdateModal
-            showModal={this.state.showModal}
-            close={close}
+            visible={this.state.visible}
+            handleCancel={handleCancel}
+            handleOk={handleOk}
             employee={this.props.employee}
-            updateEmployee={this.props.updateEmployee}
+            confirmLoading={this.state.confirmLoading}
           />
         </div>
       </div>
