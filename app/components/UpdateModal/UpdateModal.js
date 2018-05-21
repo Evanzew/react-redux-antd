@@ -1,16 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import {
-//   // Col,
-//   Modal,
-//   Form,
-//   // FormControl,
-//   // FormGroup,
-//   // InputGroup,
-//   // Glyphicon,
-//   Button
-// } from 'react-bootstrap';
-
 import { Modal, Button } from 'antd';
 import 'toastr/build/toastr.css';
 import UpdateForm from '../UpdateForm/UpdateForm';

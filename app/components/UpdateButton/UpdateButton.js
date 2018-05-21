@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import 'toastr/build/toastr.css';
+import * as toastr from 'toastr';
 import UpdateModal from '../UpdateModal/UpdateModal';
 import { Button } from 'antd';
 
@@ -19,7 +20,8 @@ class UpdateButton extends Component {
           visible: false,
           confirmLoading: false
         });
-        this.props.updateEmployee(values); 
+        this.props.updateEmployee(values);
+        toastr.success('Employee update success!');
       }, 2000);
     };
     const handleCancel = () => {
