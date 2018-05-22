@@ -47,11 +47,11 @@ const mapDispatchToProps = dispatch => {
     getAll: () => {
       dispatch(receiveEmployee());
     },
-    sortByFN: () => {
-      dispatch(sortEmpByFN());
+    sortByFN: bool => {
+      dispatch(sortEmpByFN(bool));
     },
-    sortByLN: () => {
-      dispatch(sortEmpByLN());
+    sortByLN: bool => {
+      dispatch(sortEmpByLN(bool));
     }
   };
 };

@@ -12,12 +12,14 @@ export const receiveEmployeeSuccess = employee => ({
   employee
 });
 
-export const sortEmpByFN = () => ({
-  type: SORT_BY_FN
+export const sortEmpByFN = bool => ({
+  type: SORT_BY_FN,
+  bool
 });
 
-export const sortEmpByLN = () => ({
-  type: SORT_BY_LN
+export const sortEmpByLN = bool => ({
+  type: SORT_BY_LN,
+  bool
 });
 
 export const receiveEmployee = () => ({

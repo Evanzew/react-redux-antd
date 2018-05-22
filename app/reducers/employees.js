@@ -116,7 +116,7 @@ export default function employees(state = initialEmployee, action) {
     case SORT_BY_FN:
       return {
         ...state,
-        sortByFn: !state.sortByFn,
+        sortByFn: action.bool,
         sortByLn: false,
         employee: state.employee
           .sort(
@@ -130,7 +130,7 @@ export default function employees(state = initialEmployee, action) {
       return {
         ...state,
         sortByFn: false,
-        sortByLn: !state.sortByLn,
+        sortByLn: action.bool,
         employee: state.employee
           .sort(
             sort_by('Last_Name', state.sortByLn, function(a) {

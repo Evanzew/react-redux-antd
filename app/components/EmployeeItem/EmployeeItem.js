@@ -3,21 +3,112 @@ import './EmployeeItem.css';
 import PropTypes from 'prop-types';
 import DeleteButton from '../../containers/DeleteButton/DeleteButton';
 import UpdateButton from '../../containers/UpdateButton/UpdateButton';
-import { Col, Table, Pagination } from 'react-bootstrap';
+import { Button, Col, Table } from 'antd';
+const ButtonGroup = Button.Group;
+
 class EmployeeItem extends Component {
   constructor() {
     super();
-    this.state = { activePage: 1 };
+    this.state = {
+      filteredInfo: null,
+      sortedInfo: null
+    };
   }
   render() {
-    const handleSelect = eventKey => {
+    const handleChange = (pagination, filters, sorter) => {
       this.setState({
-        activePage: eventKey
+        filteredInfo: filters,
+        sortedInfo: sorter
       });
+      if (sorter.columnKey === 'First_Name') {
+        if (sorter.order == 'ascend') {
+          this.props.sortByFN(true);
+        } else {
+          this.props.sortByFN(false);
+        }
+      }
+      if (sorter.columnKey === 'Last_Name') {
+        if (sorter.order == 'ascend') {
+          this.props.sortByLN(true);
+        } else {
+          this.props.sortByLN(false);
+        }
+      }
     };
+    let pagination = {
+      pageSize: 5,
+      total: this.props.pages * 5,
+      hideOnSinglePage: true,
+      current: this.props.index,
+      onChange: page => {
+        this.props.changeIndex(page);
+      }
+    };
+    const columns = [
+      {
+        title: 'First Name',
+        dataIndex: 'First_Name',
+        key: 'First_Name',
+        sorter: (a, b) => {
+          a.First_Name - b.First_Name;
+        }
+      },
+      {
+        title: 'Last Name',
+        dataIndex: 'Last_Name',
+        key: 'Last_Name',
+        sorter: (a, b) => {
+          a.Last_Name - b.Last_Name;
+        }
+      },
+      {
+        title: 'Gender',
+        dataIndex: 'Gender',
+        key: 'Gender'
+      },
+      {
+        title: 'Birth',
+        dataIndex: 'Birth',
+        key: 'Birth'
+      },
+      {
+        title: 'Address',
+        dataIndex: 'Address',
+        key: 'Address'
+      },
+      {
+        title: 'Phone',
+        dataIndex: 'Phone',
+        key: 'Phone'
+      },
+      {
+        title: 'Operation',
+        key: 'Operation',
+        dataIndex: 'Operation',
+        render: (text, record) => (
+          <ButtonGroup>
+            <DeleteButton id={record._id} />
+            <UpdateButton employee={record} />
+          </ButtonGroup>
+        )
+      }
+    ];
+    const data = [];
+    this.props.employees.forEach((employee, index) => {
+      data.push({
+        key: index,
+        ...employee
+      });
+    });
     return (
-      <Col xs={12}>
-        <Table responsive striped condensed hover>
+      <Col xs={24}>
+        <Table
+          columns={columns}
+          dataSource={data}
+          pagination={pagination}
+          onChange={handleChange}
+        />
+        {/* <Table responsive striped condensed hover>
           <thead>
             <tr>
               <th>
@@ -59,41 +150,15 @@ class EmployeeItem extends Component {
                 <td>{employee.Address}</td>
                 <td>{employee.Phone}</td>
                 <td>
-                  <div className="btn-group">
+                  <ButtonGroup>
                     <DeleteButton id={employee._id} />
-                    {/*<div className="display-line">
-                      <input
-                        type="button"
-                        id="update1"
-                        value="Update"
-                        className="btn btn-success"
-                      />
-                    </div>*/}
                     <UpdateButton employee={employee} />
-                  </div>
+                  </ButtonGroup>
                 </td>
               </tr>
             ))}
           </tbody>
-        </Table>
-        <div className="pull-right">
-          <Pagination
-            prev
-            next
-            first
-            last
-            ellipsis
-            boundaryLinks
-            maxButtons={3}
-            bsSize="medium"
-            items={this.props.pages}
-            activePage={this.props.index}
-            onSelect={eventKey => {
-              handleSelect(eventKey);
-              this.props.changeIndex(eventKey);
-            }}
-          />
-        </div>
+        </Table> */}
       </Col>
     );
   }
