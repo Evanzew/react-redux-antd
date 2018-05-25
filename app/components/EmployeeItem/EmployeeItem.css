@@ -5,3 +5,6 @@ td {
 .ant-table-tbody {
   background: #fff;
 }
+div.ant-layout-sider-children {
+  height: auto;
+}

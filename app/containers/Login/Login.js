@@ -24,8 +24,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loginClick: () => {
-      dispatch(isUserLogin(true));
+    loginClick: data => {
+      dispatch(isUserLogin(data));
     }
   };
 };

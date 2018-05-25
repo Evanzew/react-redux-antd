@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import $ from 'jquery';
+// import $ from 'jquery';
 
 export default async function fetchRequest(url, method, data) {
   const fetchOptions = {
@@ -7,13 +7,11 @@ export default async function fetchRequest(url, method, data) {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      'csrf-token': $('input[name="_csrf"]').val()
+      'csrf-token': document.getElementById('csrf').value
     },
     body: JSON.stringify(data),
     credentials: 'same-origin'
   };
-
-  // let options = { ...fetchOptions, body: data };
 
   let response = await fetch(url, fetchOptions);
   if (response.status >= 200 && response.status < 300) {

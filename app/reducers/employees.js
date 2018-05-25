@@ -120,7 +120,7 @@ export default function employees(state = initialEmployee, action) {
         sortByLn: false,
         employee: state.employee
           .sort(
-            sort_by('First_Name', state.sortByFn, function(a) {
+            sort_by('First_Name', action.bool, function(a) {
               return a.toUpperCase();
             })
           )
@@ -133,7 +133,7 @@ export default function employees(state = initialEmployee, action) {
         sortByLn: action.bool,
         employee: state.employee
           .sort(
-            sort_by('Last_Name', state.sortByLn, function(a) {
+            sort_by('Last_Name', action.bool, function(a) {
               return a.toUpperCase();
             })
           )

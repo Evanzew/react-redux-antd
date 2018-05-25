@@ -29,7 +29,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     logoutClick: () => {
-      dispatch(isUserLogin(false));
+      dispatch(isUserLogin({}));
       dispatch(userLogin(''));
     }
   };

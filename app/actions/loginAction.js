@@ -6,36 +6,7 @@ export const userLogin = userName => ({
   userName
 });
 
-export const isUserLogin = bool => ({
+export const isUserLogin = data => ({
   type: IS_USER_LOGIN,
-  bool
+  data
 });
-
-// export function fetchLogin() {
-//   const data = {
-//     userName: $('#username').val(),
-//     password: $('#password').val()
-//   }
-//   const fetchOptions = {
-//     method: 'POST',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//       'csrf-token': $('input[name="_csrf"]').val()
-//     },
-//     body: JSON.stringify(data),
-//     credentials: 'same-origin'
-//   };
-//   return dispatch => {
-//     return fetch('/api/v1/login', fetchOptions)
-//       .then(response => response.json())
-//       .then(json => {
-//         if (json.code == 200) {
-//           dispatch(userLogin(json.data.User_Name));
-//         }
-//         else {
-//           alert(json.message);
-//         }
-//       })
-//   }
-// }

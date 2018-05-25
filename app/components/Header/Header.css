@@ -25,7 +25,13 @@ li {
   }
 }
 .pull-right {
-  float: right;
+  float: right !important;
+}
+.feet-hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
 }
 .text-center {
   text-align: center;

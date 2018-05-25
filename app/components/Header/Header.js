@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
-// const MenuItemGroup = Menu.ItemGroup;
 import './Header.css';
 import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
 const { Header } = Layout;
-// import { LinkContainer } from 'react-router-bootstrap';
 export default class HeaderComponent extends Component {
   constructor() {
     super();

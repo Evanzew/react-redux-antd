@@ -1,306 +1,264 @@
 import React, { Component } from 'react';
-import 'bootstrap-validator';
-import './CreateForm.css';
-import PropTypes from 'prop-types';
-import DatePicker from 'react-bootstrap-date-picker';
 import {
-  Button,
-  Modal,
-  Alert,
-  Row,
   Form,
+  Icon,
+  Input,
+  Select,
+  Alert,
+  DatePicker,
+  Button,
   Col,
-  FormGroup,
-  InputGroup,
-  Glyphicon,
-  FormControl
-} from 'react-bootstrap';
-import $ from 'jquery';
+  Row,
+  Modal
+} from 'antd';
 import './CreateForm.css';
-import * as toastr from 'toastr';
-import 'toastr/build/toastr.css';
+const FormItem = Form.Item;
+const Option = Select.Option;
 
-class CreateForm extends Component {
+class CreateFormComponent extends Component {
   constructor() {
     super();
-    this.state = { value: new Date().toISOString(), showModal: false };
+    this.state = {
+      visible: false,
+      confirmLoading: false
+    };
   }
 
   render() {
-    const open = () => {
-      this.setState({ showModal: true });
-    };
-    const close = () => {
-      this.setState({ showModal: false });
-    };
-    const handleChange = (value, formattedValue) => {
-      this.setState({
-        value: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
-        formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
+    const { getFieldDecorator } = this.props.form;
+    const rowGutter = { xs: 8, sm: 16, md: 24, lg: 32 };
+    const showModal = () => {
+      this.props.form.validateFields(err => {
+        if (!err) {
+          this.setState({
+            visible: true
+          });
+        }
       });
     };
-    $(function() {
-      $('#example-datepicker_group input:first-child').attr({
-        'data-error': 'Sorry,Birth is invalid',
-        pattern:
-          '^(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29)$',
-        name: 'Birth'
-      });
-      $('#example-datepicker_group input:first-child').on('click', function() {
-        $('#date-picker-popover-0 td').unbind('click');
-        $('#date-picker-popover-0 td').on('click', function() {
+    const handleSubmit = e => {
+      e.preventDefault();
+      this.props.form.validateFields((err, values) => {
+        if (!err) {
+          this.setState({
+            confirmLoading: true
+          });
           window.setTimeout(() => {
-            $('#Birth').validator('validate');
-          }, 10);
-        });
+            this.setState({
+              visible: false,
+              confirmLoading: false
+            });
+            values['Birth'] = values['Birth'].format('YYYY-MM-DD');
+            this.props.createEmployee(values);
+            this.props.form.resetFields();
+          }, 2000);
+        }
       });
-      $('#validateForm')
-        .validator()
-        .on('submit', function(e) {
-          if (e.isDefaultPrevented()) {
-            return;
-          } else {
-            e.preventDefault();
-            open();
-          }
-        });
-    });
+    };
+    const handleCancel = () => {
+      this.setState({
+        visible: false
+      });
+    };
+    const prefixSelector = getFieldDecorator('prefix', {
+      initialValue: '86'
+    })(
+      <Select style={{ width: 70 }}>
+        <Option value="86">+86</Option>
+        <Option value="87">+001</Option>
+      </Select>
+    );
+
     return (
-      <Form data-toggle="validator" role="form" id="validateForm">
-        <Col md={12}>
-          <Row>
-            <FormGroup className="has-feedback">
-              <Col md={6}>
-                <InputGroup>
-                  <InputGroup.Addon>
-                    <Glyphicon glyph="user" />
-                  </InputGroup.Addon>
-                  <FormControl
-                    placeholder="FirstName"
-                    name="First_Name"
-                    pattern="^[a-zA-Z]{2,20}$"
-                    data-error="Sorry,number is invalid"
-                    required
-                  />
-                </InputGroup>
-                <Glyphicon
-                  glyph=""
-                  className="form-control-feedback"
-                  aria-hidden="true"
+      <Form id="createForm" className="login-form" onSubmit={handleSubmit}>
+        <Row gutter={rowGutter}>
+          <Col lg={12}>
+            <FormItem hasFeedback>
+              {getFieldDecorator('First_Name', {
+                rules: [
+                  { required: true, message: 'Sorry, first name is required' },
+                  {
+                    pattern: /^[a-zA-Z]{2,20}$/,
+                    message: 'Sorry,first name is invalid'
+                  }
+                ]
+              })(
+                <Input
+                  placeholder="First Name"
+                  prefix={
+                    <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
+                  }
                 />
-                <div className="help-block with-errors" />
-              </Col>
-            </FormGroup>
-            <Col md={6}>
-              <Alert bsStyle="info" className="alert-padding">
-                <b>Attention:</b>
-                Name shoule to be composed of 2-20 English letters.
-              </Alert>
-            </Col>
-          </Row>
-          <Row>
-            <FormGroup className="has-feedback">
-              <Col md={6}>
-                <InputGroup>
-                  <InputGroup.Addon>
-                    <Glyphicon glyph="user" />
-                  </InputGroup.Addon>
-                  <FormControl
-                    placeholder="LastName"
-                    name="Last_Name"
-                    pattern="^[a-zA-Z]{2,20}$"
-                    data-error="Sorry,number is invalid"
-                    required
-                  />
-                </InputGroup>
-                <Glyphicon
-                  glyph=""
-                  className="form-control-feedback"
-                  aria-hidden="true"
+              )}
+            </FormItem>
+          </Col>
+          <Col lg={12}>
+            <Alert
+              message="Name shoule to be composed of 2-20 English letters."
+              type="info"
+            />
+          </Col>
+        </Row>
+        <Row gutter={rowGutter}>
+          <Col lg={12}>
+            <FormItem hasFeedback>
+              {getFieldDecorator('Last_Name', {
+                rules: [
+                  { required: true, message: 'Sorry, last name is required' },
+                  {
+                    pattern: /^[a-zA-Z]{2,20}$/,
+                    message: 'Sorry,last name is invalid'
+                  }
+                ]
+              })(
+                <Input
+                  placeholder="Last Name"
+                  prefix={
+                    <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
+                  }
                 />
-                <div className="help-block with-errors" />
-              </Col>
-            </FormGroup>
-            <Col md={6}>
-              <Alert bsStyle="info" className="alert-padding">
-                <b>Attention:</b>
-                Name shoule to be composed of 2-20 English letters.
-              </Alert>
-            </Col>
-          </Row>
-          <Row>
-            <FormGroup className="has-feedback">
-              <Col md={6}>
-                <InputGroup>
-                  <InputGroup.Addon>
-                    <Glyphicon glyph="user" />
-                  </InputGroup.Addon>
-                  <FormControl
-                    name="Gender"
-                    componentClass="select"
-                    id="gender"
-                    data-error="Sorry,please select gender"
-                    required
-                  >
-                    <option
-                      value=""
-                      disabled
-                      selected
-                      style={{ display: 'none' }}
-                    >
-                      Please Choose Gender
-                    </option>
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                  </FormControl>
-                </InputGroup>
-                <Glyphicon
-                  glyph=""
-                  className="form-control-feedback"
-                  aria-hidden="true"
+              )}
+            </FormItem>
+          </Col>
+          <Col lg={12}>
+            <Alert
+              message="Name shoule to be composed of 2-20 English letters."
+              type="info"
+            />
+          </Col>
+        </Row>
+        <Row gutter={rowGutter}>
+          <Col lg={12}>
+            <FormItem hasFeedback>
+              {getFieldDecorator('Gender', {
+                rules: [
+                  { required: true, message: 'Sorry, gender is required' }
+                ]
+              })(
+                <Select placeholder="Please Choose Gender">
+                  <Option value="M">Male</Option>
+                  <Option value="F">Famale</Option>
+                </Select>
+              )}
+            </FormItem>
+          </Col>
+          <Col lg={12}>
+            <Alert message="You should select gender." type="info" />
+          </Col>
+        </Row>
+
+        <Row gutter={rowGutter}>
+          <Col lg={12}>
+            <FormItem hasFeedback>
+              {getFieldDecorator('Birth', {
+                rules: [
+                  {
+                    type: 'object',
+                    required: true,
+                    message: 'Please select birth day!'
+                  }
+                ]
+              })(
+                <DatePicker
+                  format="YYYY-MM-DD"
+                  style={{ width: '100%' }}
+                  placeholder="Select Birth"
                 />
-                <div className="help-block with-errors" />
-              </Col>
-            </FormGroup>
-            <Col md={6}>
-              <Alert bsStyle="info" className="alert-padding">
-                <b>Attention:</b>
-                You should select gender.
-              </Alert>
-            </Col>
-          </Row>
-          <Row>
-            <FormGroup className="has-feedback" id="Birth">
-              <Col md={6}>
-                <InputGroup>
-                  <InputGroup.Addon>
-                    <Glyphicon glyph="calendar" />
-                  </InputGroup.Addon>
-                  <DatePicker
-                    id="example-datepicker"
-                    value={this.state.value}
-                    onChange={handleChange}
-                    dateFormat="YYYY-MM-DD"
-                    required
-                  />
-                </InputGroup>
-                <Glyphicon
-                  glyph=""
-                  className="form-control-feedback"
-                  aria-hidden="true"
+              )}
+            </FormItem>
+          </Col>
+
+          <Col lg={12}>
+            <Alert message="Please select birth day." type="info" />
+          </Col>
+        </Row>
+        <Row gutter={rowGutter}>
+          <Col lg={12}>
+            <FormItem hasFeedback>
+              {getFieldDecorator('Address', {
+                rules: [
+                  { required: true, message: 'Sorry,address is required' }
+                ]
+              })(
+                <Input
+                  placeholder="Address"
+                  prefix={
+                    <Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />
+                  }
                 />
-                <div className="help-block with-errors" />
-              </Col>
-            </FormGroup>
-            <Col md={6}>
-              <Alert bsStyle="info" className="alert-padding">
-                <b>Attention:</b>
-                You should select bitrh or enter date like: YYYY-MM-DD.
-              </Alert>
-            </Col>
-          </Row>
-          <Row>
-            <FormGroup className="has-feedback">
-              <Col md={6}>
-                <InputGroup>
-                  <InputGroup.Addon>
-                    <Glyphicon glyph="home" />
-                  </InputGroup.Addon>
-                  <FormControl
-                    placeholder="Address"
-                    name="Address"
-                    data-error="Sorry,address is required"
-                    required
-                  />
-                </InputGroup>
-                <Glyphicon
-                  glyph=""
-                  className="form-control-feedback"
-                  aria-hidden="true"
+              )}
+            </FormItem>
+          </Col>
+          <Col lg={12}>
+            <Alert message="Address is required." type="info" />
+          </Col>
+        </Row>
+        <Row gutter={rowGutter}>
+          <Col lg={12}>
+            <FormItem hasFeedback>
+              {getFieldDecorator('Phone', {
+                rules: [
+                  { required: true, message: 'Sorry,Phone is required' },
+                  {
+                    pattern: /^([1]+[3,5,7,8]+\d{9}$)/,
+                    message: 'Sorry,phone number is invalid'
+                  }
+                ]
+              })(
+                <Input
+                  placeholder="Phone"
+                  addonBefore={prefixSelector}
+                  prefix={
+                    <Icon type="Phone" style={{ color: 'rgba(0,0,0,.25)' }} />
+                  }
                 />
-                <div className="help-block with-errors" />
-              </Col>
-            </FormGroup>
-            <Col md={6}>
-              <Alert bsStyle="info" className="alert-padding">
-                <b>Attention:</b>
-                Address is required.
-              </Alert>
-            </Col>
-          </Row>
-          <Row>
-            <FormGroup className="has-feedback">
-              <Col md={6}>
-                <InputGroup>
-                  <InputGroup.Addon>
-                    <Glyphicon glyph="phone" />
-                  </InputGroup.Addon>
-                  <FormControl
-                    placeholder="Phone"
-                    name="Phone"
-                    pattern="^([1]+[3,5,7,8]+\d{9}$)"
-                    data-error="Sorry,phone number is invalid"
-                    required
-                  />
-                </InputGroup>
-                <Glyphicon
-                  glyph=""
-                  className="form-control-feedback"
-                  aria-hidden="true"
-                />
-                <div className="help-block with-errors" />
-              </Col>
-            </FormGroup>
-            <Col md={6}>
-              <Alert bsStyle="info" className="alert-padding">
-                <b>Attention:</b>
-                Phone should to be composed of 11 digit number.
-              </Alert>
-            </Col>
-          </Row>
-        </Col>
-        <Col mdOffset={1} md={4} xs={12}>
-          <Button bsStyle="success" block type="submit">
-            Create
-          </Button>
-          <div>
-            <Modal show={this.state.showModal} onHide={close}>
-              <Modal.Header closeButton>
-                <Modal.Title className="modal-title text-warning">
-                  Attention
-                </Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                Please confirm whether you really want to create this employee.
-              </Modal.Body>
-              <Modal.Footer>
-                <Button
-                  bsStyle="success"
-                  onClick={e => {
-                    e.preventDefault();
-                    var data = $('#validateForm').serialize();
-                    this.setState({ showModal: false });
-                    this.props.createEmployee(data);
-                    $('#validateForm')[0].reset();
-                    $('#Birth').validator('validate');
-                    $('#gender').val('');
-                    toastr.success('Employee Successfully Created!', 'Success');
-                  }}
-                >
-                  Create
-                </Button>
-                <Button onClick={close}>Close</Button>
-              </Modal.Footer>
-            </Modal>
-          </div>
-        </Col>
+              )}
+            </FormItem>
+          </Col>
+          <Col lg={12}>
+            <Alert
+              message="Phone should to be composed of 11 digit number."
+              type="info"
+            />
+          </Col>
+        </Row>
+        <FormItem>
+          <Col lg={{ span: 8, offset: 2 }} md={24}>
+            <Button
+              style={{ display: 'block', width: '100%' }}
+              onClick={showModal}
+              type="primary"
+            >
+              Create
+            </Button>
+          </Col>
+        </FormItem>
+        <Modal
+          title="Attention"
+          visible={this.state.visible}
+          confirmLoading={this.state.confirmLoading}
+          onCancel={handleCancel}
+          footer={[
+            <Button key="back" onClick={handleCancel}>
+              Cancle
+            </Button>,
+            <Button
+              key="submit"
+              type="primary"
+              loading={this.state.confirmLoading}
+              onClick={handleSubmit}
+              htmlType="submit"
+            >
+              Create
+            </Button>
+          ]}
+        >
+          Please confirm whether you really want to create this employee.
+        </Modal>
       </Form>
     );
   }
 }
 
-CreateForm.propTypes = {
-  createEmployee: PropTypes.func.isRequired
-};
-
+const CreateForm = Form.create()(CreateFormComponent);
 export default CreateForm;

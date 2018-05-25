@@ -1,13 +1,8 @@
 import { call, put, take } from 'redux-saga/effects';
 import fetchRequest from '../helper/fetchHelper';
 import { userLogin, IS_USER_LOGIN, isUserLogin } from '../actions/loginAction';
-import $ from 'jquery';
 
-export function* loginAsync() {
-  const data = {
-    userName: $('#username').val(),
-    password: $('#password').val()
-  };
+export function* loginAsync(data) {
   try {
     if (data.userName !== undefined) {
       let result = yield call(fetchRequest, '/api/v1/login', 'POST', data);
@@ -15,7 +10,7 @@ export function* loginAsync() {
         yield put(userLogin(result.data.User_Name));
       } else if (result.code == 801) {
         alert(result.message);
-        yield put(isUserLogin(false));
+        yield put(isUserLogin({}));
       }
     }
   } catch (error) {
@@ -25,7 +20,7 @@ export function* loginAsync() {
 
 export function* watchLoginAsync() {
   while (true) {
-    yield take(IS_USER_LOGIN);
-    yield call(loginAsync);
+    const { data } = yield take(IS_USER_LOGIN);
+    yield call(loginAsync, data);
   }
 }

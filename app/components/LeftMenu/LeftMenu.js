@@ -15,7 +15,7 @@ export default class LeftMenu extends Component {
           mode="inline"
           defaultSelectedKeys={[this.props.selectKey]}
           defaultOpenKeys={[this.props.openKey]}
-          style={{ height: '100%', borderRight: 0 }}
+          style={{ borderRight: 0 }}
         >
           <SubMenu
             key="List"
