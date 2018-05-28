@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import 'toastr/build/toastr.css';
 import * as toastr from 'toastr';
@@ -34,20 +34,18 @@ class UpdateButton extends Component {
     };
 
     return (
-      <div style={{ display: 'inline-block' }} key={this.props.employee._id}>
+      <Fragment key={this.props.employee._id}>
         <Button type="success" onClick={open}>
           Update
         </Button>
-        <div>
-          <UpdateModal
-            visible={this.state.visible}
-            handleCancel={handleCancel}
-            handleOk={handleOk}
-            employee={this.props.employee}
-            confirmLoading={this.state.confirmLoading}
-          />
-        </div>
-      </div>
+        <UpdateModal
+          visible={this.state.visible}
+          handleCancel={handleCancel}
+          handleOk={handleOk}
+          employee={this.props.employee}
+          confirmLoading={this.state.confirmLoading}
+        />
+      </Fragment>
     );
   }
 }

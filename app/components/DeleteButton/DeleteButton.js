@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './DeleteButton.css';
 import * as toastr from 'toastr';
@@ -16,7 +16,7 @@ export default class DeleteButton extends Component {
     const text =
       'Please confirm whether you really want to delete this employee!!';
     return (
-      <div style={{ display: 'inline-block' }} key={this.props.index}>
+      <Fragment key={this.props.index}>
         <Popconfirm
           placement="topLeft"
           title={text}
@@ -34,7 +34,7 @@ export default class DeleteButton extends Component {
         >
           <Button type="danger">Delete</Button>
         </Popconfirm>
-      </div>
+      </Fragment>
     );
   }
 }
