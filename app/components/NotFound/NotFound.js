@@ -6,7 +6,7 @@ export default class NotFound extends Component {
   }
   render() {
     return (
-      <div className="container text-center">
+      <div className="text-center">
         <h1>404 Not Found</h1>
       </div>
     );

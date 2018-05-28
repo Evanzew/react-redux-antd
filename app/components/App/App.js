@@ -18,11 +18,9 @@ export default class App extends Component {
       <Layout>
         <Header />
         <Layout>
-          <div className="container">
-            <LeftMenu />
-            <NavTip title={'List'} />
-            <EmployeeList />
-          </div>
+          <LeftMenu />
+          <NavTip title={'List'} />
+          <EmployeeList />
         </Layout>
       </Layout>
     );

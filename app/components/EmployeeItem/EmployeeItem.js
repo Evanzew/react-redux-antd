@@ -108,57 +108,6 @@ class EmployeeItem extends Component {
           pagination={pagination}
           onChange={handleChange}
         />
-        {/* <Table responsive striped condensed hover>
-          <thead>
-            <tr>
-              <th>
-                <a
-                  href="#"
-                  onClick={e => {
-                    e.preventDefault();
-                    this.props.sortByFN();
-                  }}
-                >
-                  Frist Name
-                </a>
-              </th>
-              <th>
-                <a
-                  href="#"
-                  onClick={e => {
-                    e.preventDefault();
-                    this.props.sortByLN();
-                  }}
-                >
-                  Last Name
-                </a>
-              </th>
-              <th>Gender</th>
-              <th>Birth</th>
-              <th>Address</th>
-              <th>Phone</th>
-              <th>Operation</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.employees.map((employee, i) => (
-              <tr key={i}>
-                <td>{employee.First_Name}</td>
-                <td>{employee.Last_Name}</td>
-                <td>{employee.Gender}</td>
-                <td>{employee.Birth}</td>
-                <td>{employee.Address}</td>
-                <td>{employee.Phone}</td>
-                <td>
-                  <ButtonGroup>
-                    <DeleteButton id={employee._id} />
-                    <UpdateButton employee={employee} />
-                  </ButtonGroup>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table> */}
       </Col>
     );
   }
