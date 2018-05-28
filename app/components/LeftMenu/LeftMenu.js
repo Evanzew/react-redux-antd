@@ -30,6 +30,18 @@ export default class LeftMenu extends Component {
             </Menu.Item>
           </SubMenu>
           <SubMenu
+            key="Version"
+            title={
+              <span>
+                <Icon type="laptop" />Version
+              </span>
+            }
+          >
+            <Menu.Item key="Charts">
+              <Link to="/charts">Data Charts</Link>
+            </Menu.Item>
+          </SubMenu>
+          <SubMenu
             key="Action"
             title={
               <span>

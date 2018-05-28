@@ -49,3 +49,7 @@ npm start
 > Update Employee priview
 
 ![alt text](/app/assets/preview-update.jpg 'Update page preview')
+
+> Charts Page priview
+
+![alt text](/app/assets/preview-chart.jpg 'Charts page preview')

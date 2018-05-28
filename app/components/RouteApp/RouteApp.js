@@ -4,6 +4,7 @@ import EmployeeList from '../../containers/EmployeeList/EmployeeList';
 import Login from '../../containers/Login/Login';
 import NotFound from '../NotFound/NotFound';
 import AddEmployee from '../AddEmployee/AddEmployee';
+import DataCharts from '../DataCharts/DataCharts';
 export default class RouteApp extends Component {
   constructor() {
     super();
@@ -17,6 +18,7 @@ export default class RouteApp extends Component {
           {/*<Route path="/list" component={EmployeeList} />*/}
           <Route path="/new" component={AddEmployee} />
           <Route path="/login" component={Login} />
+          <Route path="/charts" component={DataCharts} />
           <Route path="/404" component={NotFound} />
           <Redirect to="/404" />
         </Switch>

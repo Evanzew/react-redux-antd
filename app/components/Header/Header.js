@@ -33,6 +33,9 @@ export default class HeaderComponent extends Component {
           <Menu.Item key="List">
             <Link to="/">List</Link>
           </Menu.Item>
+          <Menu.Item key="Charts">
+            <Link to="/charts">Charts</Link>
+          </Menu.Item>
           {this.props.userName == '' ? (
             <Menu.Item key="Login" className="pull-right">
               <Link to="/login">Log In</Link>
@@ -52,7 +55,7 @@ export default class HeaderComponent extends Component {
                 className="text-center"
                 onClick={this.props.logoutClick}
               >
-                LougOut
+                Log Out
               </Menu.Item>
             </SubMenu>
           )}

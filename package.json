@@ -46,6 +46,7 @@
     "ES6"
   ],
   "dependencies": {
+    "@antv/data-set": "^0.8.9",
     "antd": "^3.5.2",
     "babel-plugin-import": "^1.7.0",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -70,6 +71,7 @@
     "redux": "^3.7.2",
     "redux-saga": "^0.15.6",
     "serve-favicon": "~2.4.2",
+    "viser-react": "2.2.6",
     "webpack-dev-middleware": "^1.11.0",
     "webpack-hot-middleware": "^2.18.2"
   },
