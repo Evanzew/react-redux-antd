@@ -3,18 +3,40 @@ import EmployeeItem from '../EmployeeItem/EmployeeItem';
 import SearchBar from '../../containers/SearchBar/SearchBar';
 import NavTip from '../NavTip/NavTip';
 import LeftMenu from '../../components/LeftMenu/LeftMenu.js';
-// import { receiveEmployee } from '../../actions/employeeAction';
 import Header from '../../containers/Header/Header';
+import './EmployeeList.css';
 import PropTypes from 'prop-types';
-import { Layout } from 'antd';
+import { Layout, Spin } from 'antd';
 const { Content } = Layout;
 export default class EmployeeList extends Component {
   constructor(props) {
     super(props);
+    this.state = { loading: true };
   }
 
   componentDidMount() {
     this.props.getAll();
+    if (this.props.employees.length == 0) {
+      window.setTimeout(() => {
+        this.setState({
+          loading: false
+        });
+      }, 2000);
+    } else {
+      this.setState({
+        loading: true
+      });
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.employees.length == 0) {
+      this.setState({ loading: true });
+      window.setTimeout(() => {
+        this.setState({
+          loading: false
+        });
+      }, 2000);
+    }
   }
   render() {
     return (
@@ -27,14 +49,20 @@ export default class EmployeeList extends Component {
               <LeftMenu openKey={'List'} selectKey={'All'} />
               <Content>
                 <SearchBar />
-                <EmployeeItem
-                  employees={this.props.employees}
-                  index={this.props.index}
-                  pages={this.props.pages}
-                  changeIndex={this.props.changeIndex}
-                  sortByFN={this.props.sortByFN}
-                  sortByLN={this.props.sortByLN}
-                />
+                {this.props.employees.length > 0 || !this.state.loading ? (
+                  <EmployeeItem
+                    employees={this.props.employees}
+                    index={this.props.index}
+                    pages={this.props.pages}
+                    changeIndex={this.props.changeIndex}
+                    sortByFN={this.props.sortByFN}
+                    sortByLN={this.props.sortByLN}
+                  />
+                ) : (
+                  <div className="loadingContext">
+                    <Spin spinning={this.state.loading} />
+                  </div>
+                )}
               </Content>
             </Layout>
           </Content>
