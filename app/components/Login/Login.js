@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Login.css';
 import { Redirect } from 'react-router-dom';
 import { Col, Row } from 'antd';
-import LoginForm from './LoginForm';
+import LoginForm from '../Form/LoginForm/LoginForm';
 
 export default class Login extends Component {
   constructor() {

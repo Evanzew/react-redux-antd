@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Login.css';
 import PropTypes from 'prop-types';
 import { Form, Input, Button } from 'antd';
 const FromItem = Form.Item;

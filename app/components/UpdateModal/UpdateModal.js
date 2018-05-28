@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Button } from 'antd';
 import 'toastr/build/toastr.css';
-import UpdateForm from '../UpdateForm/UpdateForm';
+import UpdateForm from '../Form/UpdateForm/UpdateForm';
 let employeeFormValue;
 class UpdateModal extends Component {
   constructor(props) {

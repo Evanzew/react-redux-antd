@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Col, Row } from 'antd';
-import SearchBarForm from '../SearchBarForm/SearchBarForm';
+import SearchBarForm from '../Form/SearchBarForm/SearchBarForm';
 class SearchBar extends Component {
   constructor() {
     super();

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createEmployee } from '../../actions/employeeAction';
-import CreateFormComponent from '../../components/CreateForm/CreateForm';
+import CreateFormComponent from '../../components/Form/CreateForm/CreateForm';
 
 class CreateForm extends Component {
   constructor() {
