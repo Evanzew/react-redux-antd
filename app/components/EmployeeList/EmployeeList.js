@@ -8,6 +8,7 @@ import './EmployeeList.scss';
 import PropTypes from 'prop-types';
 import { Layout, Spin } from 'antd';
 const { Content } = Layout;
+let loadingTimeOut;
 export default class EmployeeList extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,7 @@ export default class EmployeeList extends Component {
   componentDidMount() {
     this.props.getAll();
     if (this.props.employees.length == 0) {
-      window.setTimeout(() => {
+      loadingTimeOut = window.setTimeout(() => {
         this.setState({
           loading: false
         });
@@ -34,6 +35,9 @@ export default class EmployeeList extends Component {
         });
       }, 2000);
     }
+  }
+  componentWillUnmount() {
+    window.clearTimeout(loadingTimeOut);
   }
   render() {
     return (

@@ -71,7 +71,7 @@ module.exports = {
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg|jpg|gif|ico)$/,
-        loader: ['url-loader', 'img-loader']
+        loader: 'url-loader'
       },
       { test: /\.html$/, loader: 'html-loader' },
       {

@@ -25,8 +25,11 @@ This is a employee system written by react , redux ,etc
 ## Build Setup
 
 ```bash
+# install cnpm if you work in China.
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
 # install dependencies
-npm install
+cnpm install / npm install
 
 # serve with hot reload at localhost:8080
 npm start
