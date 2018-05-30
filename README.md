@@ -29,7 +29,7 @@ This is a employee system written by react , redux ,etc
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 # install dependencies
-cnpm install / npm install
+cnpm install / npm instal
 
 # serve with hot reload at localhost:8080
 npm start
