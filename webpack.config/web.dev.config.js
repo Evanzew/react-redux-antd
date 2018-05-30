@@ -78,36 +78,15 @@ module.exports = {
         test: /\.scss$/,
         use: extractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: false,
-                modules: true
-              }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: false,
-                modules: true
-              }
-            }
-          ]
+          use: ['css-loader', 'sass-loader'],
+          publicPath: '/dist'
         })
       },
       {
         test: /\.css$/,
         use: extractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: true
-              }
-            }
-          ]
+          use: ['css-loader', 'sass-loader']
         })
       }
     ]

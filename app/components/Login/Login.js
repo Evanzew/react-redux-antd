@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './Login.css';
+import './Login.scss';
 import { Redirect } from 'react-router-dom';
 import { Col, Row } from 'antd';
 import LoginForm from '../Form/LoginForm/LoginForm';

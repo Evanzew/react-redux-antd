@@ -4,7 +4,7 @@ import SearchBar from '../../containers/SearchBar/SearchBar';
 import NavTip from '../NavTip/NavTip';
 import LeftMenu from '../../components/LeftMenu/LeftMenu.js';
 import Header from '../../containers/Header/Header';
-import './EmployeeList.css';
+import './EmployeeList.scss';
 import PropTypes from 'prop-types';
 import { Layout, Spin } from 'antd';
 const { Content } = Layout;
@@ -21,13 +21,10 @@ export default class EmployeeList extends Component {
         this.setState({
           loading: false
         });
-      }, 2000);
-    } else {
-      this.setState({
-        loading: true
-      });
+      }, 8000);
     }
   }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.employees.length == 0) {
       this.setState({ loading: true });

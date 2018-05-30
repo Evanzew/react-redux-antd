@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
-import './Header.css';
+import './Header.scss';
 import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
 const { Header } = Layout;

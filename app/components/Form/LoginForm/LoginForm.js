@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './LoginForm.scss';
 import { Form, Input, Button } from 'antd';
 const FromItem = Form.Item;
 class LoginForm extends Component {

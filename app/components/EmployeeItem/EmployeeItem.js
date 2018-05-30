@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './EmployeeItem.css';
+import './EmployeeItem.scss';
 import PropTypes from 'prop-types';
 import DeleteButton from '../../containers/DeleteButton/DeleteButton';
 import UpdateButton from '../../containers/UpdateButton/UpdateButton';

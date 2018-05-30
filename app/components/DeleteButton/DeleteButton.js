@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import './DeleteButton.css';
 import * as toastr from 'toastr';
 import 'toastr/build/toastr.css';
 import { Popconfirm, Button } from 'antd';

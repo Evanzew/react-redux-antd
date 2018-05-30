@@ -11,7 +11,7 @@ import {
   Row,
   Modal
 } from 'antd';
-import './CreateForm.css';
+import './CreateForm.scss';
 const FormItem = Form.Item;
 const Option = Select.Option;
 

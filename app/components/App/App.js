@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 // import Body from '../Body/Body.js';
 import Header from '../../containers/Header/Header.js';
 import LeftMenu from '../../containers/LeftMenu/LeftMenu.js';
-import './App.css';
 import NavTip from '../NavTip/NavTip';
 import EmployeeList from '../../containers/EmployeeList/EmployeeList';
 import { Layout } from 'antd';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './UpdateForm.css';
+import './UpdateForm.scss';
 import { Form, Icon, Input, Select } from 'antd';
 const FormItem = Form.Item;
 const Option = Select.Option;
