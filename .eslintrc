@@ -1,5 +1,9 @@
 {
   "parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "browser": true
+  },
   "globals": {
     "require": false,
     "alert": false,
@@ -11,7 +15,6 @@
   },
   "plugins": ["react"],
   "rules": {
-    /* eslint-enable sort-keys */
     "react/jsx-uses-vars": "error",
 
     "accessor-pairs": "off",
@@ -203,7 +206,7 @@
     "no-unused-vars": [
       "error",
       {
-        "argsIgnorePattern": "next", // if there's mutiple,  next|aaa|bb|ccc
+        "argsIgnorePattern": "next",
         "varsIgnorePattern": "React"
       }
     ],

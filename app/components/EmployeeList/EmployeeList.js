@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'babel-polyfill';
 import EmployeeItem from '../EmployeeItem/EmployeeItem';
 import SearchBar from '../../containers/SearchBar/SearchBar';
 import NavTip from '../NavTip/NavTip';
@@ -8,7 +9,6 @@ import './EmployeeList.scss';
 import PropTypes from 'prop-types';
 import { Layout, Spin } from 'antd';
 const { Content } = Layout;
-let loadingTimeOut;
 export default class EmployeeList extends Component {
   constructor(props) {
     super(props);
@@ -16,14 +16,13 @@ export default class EmployeeList extends Component {
   }
 
   componentDidMount() {
-    this.props.getAll();
-    if (this.props.employees.length == 0) {
-      loadingTimeOut = window.setTimeout(() => {
-        this.setState({
-          loading: false
-        });
-      }, 8000);
-    }
+    new window.Promise(() => {
+      this.props.getAll();
+    }).then(() => {
+      this.setState({
+        loading: false
+      });
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -36,9 +35,7 @@ export default class EmployeeList extends Component {
       }, 2000);
     }
   }
-  componentWillUnmount() {
-    window.clearTimeout(loadingTimeOut);
-  }
+
   render() {
     return (
       <Layout>

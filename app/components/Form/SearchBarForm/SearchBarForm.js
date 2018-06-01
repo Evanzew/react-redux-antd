@@ -28,11 +28,10 @@ class SearchBarForm extends Component {
           )}
         </FormItem>
         <FormItem label="Options">
-          {getFieldDecorator('searchInput')(
-            <Select
-              placeholder="Please select a option"
-              style={{ width: '200px' }}
-            >
+          {getFieldDecorator('searchInput', {
+            initialValue: 'First_Name'
+          })(
+            <Select style={{ width: '200px' }}>
               <Option value="First_Name">FirstName</Option>
               <Option value="Last_Name">LastName</Option>
             </Select>

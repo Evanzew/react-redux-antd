@@ -43,21 +43,9 @@ ul {
   border-right: 1px solid #707070;
 }
 
-.btn-group .btn {
-  position: relative;
-  float: left;
-}
-
 .display-line {
   display: inline-block;
 }
-
-.btn-group div:last-child .btn {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.btn-group div:first-child .btn {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+#toast-container {
+  top: 64px;
 }

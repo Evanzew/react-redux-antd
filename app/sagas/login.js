@@ -1,16 +1,17 @@
 import { call, put, take } from 'redux-saga/effects';
 import fetchRequest from '../helper/fetchHelper';
-import { userLogin, IS_USER_LOGIN, isUserLogin } from '../actions/loginAction';
-
+import * as toastr from 'toastr';
+import { userLogin, IS_USER_LOGIN } from '../actions/loginAction';
+toastr.options.closeButton = true;
 export function* loginAsync(data) {
   try {
     if (data.userName !== undefined) {
       let result = yield call(fetchRequest, '/api/v1/login', 'POST', data);
       if (result.code == 200) {
         yield put(userLogin(result.data.User_Name));
-      } else if (result.code == 801) {
-        alert(result.message);
-        yield put(isUserLogin({}));
+        toastr.success('Login Success!');
+      } else {
+        toastr.error('UserName or Password error!');
       }
     }
   } catch (error) {

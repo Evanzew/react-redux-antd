@@ -2,11 +2,13 @@ import { call, take } from 'redux-saga/effects';
 import fetchRequest from '../helper/fetchHelper';
 import { CREATE_EMPLOYEE } from '../actions/employeeAction';
 import { lsitAsync } from './list';
+import * as toastr from 'toastr';
 export function* createAsync(data) {
   try {
     let result = yield call(fetchRequest, '/api/v1/addEmployee', 'post', data);
     if (result.code != 200) {
       alert(result.message);
+      toastr.success('Employee added success!');
     }
   } catch (error) {
     console.log(error);

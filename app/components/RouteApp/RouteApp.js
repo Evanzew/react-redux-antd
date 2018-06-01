@@ -10,7 +10,7 @@ export default class RouteApp extends Component {
     super();
   }
   render() {
-    return (
+    return this.props.userName != '' ? (
       <div>
         <Switch>
           <Route exact path="/" component={EmployeeList} />
@@ -23,6 +23,11 @@ export default class RouteApp extends Component {
           <Redirect to="/404" />
         </Switch>
       </div>
+    ) : (
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Redirect to="/login" />
+      </Switch>
     );
   }
 }

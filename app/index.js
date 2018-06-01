@@ -1,7 +1,7 @@
 import './index.css';
 import 'babel-polyfill';
 import React from 'react';
-import RouteApp from './components/RouteApp/RouteApp';
+import RouteApp from './containers/RouteApp/RouteApp';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { userLogin, isUserLogin } from '../../actions/loginAction';
+import * as toastr from 'toastr';
 import HeaderComponent from '../../components/Header/Header';
 
 class Header extends Component {
@@ -31,6 +32,7 @@ const mapDispatchToProps = dispatch => {
     logoutClick: () => {
       dispatch(isUserLogin({}));
       dispatch(userLogin(''));
+      toastr.success('Logout Success!');
     }
   };
 };
