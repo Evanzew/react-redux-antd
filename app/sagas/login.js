@@ -9,7 +9,8 @@ export function* loginAsync(data) {
       let result = yield call(fetchRequest, '/api/v1/login', 'POST', data);
       if (result.code == 200) {
         yield put(userLogin(result.data.User_Name));
-        toastr.success('Login Success!');
+        var dataJson = JSON.stringify(data);
+        sessionStorage.setItem('data', dataJson);
       } else {
         toastr.error('UserName or Password error!');
       }

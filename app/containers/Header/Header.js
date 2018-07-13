@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { userLogin, isUserLogin } from '../../actions/loginAction';
+import { receiveEmployeeSuccess } from '../../actions/employeeAction';
 import * as toastr from 'toastr';
 import HeaderComponent from '../../components/Header/Header';
 
@@ -21,7 +22,12 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => {
-  const userName = state.user.userName;
+  if (sessionStorage.getItem('data')) {
+    var userSessionName = JSON.parse(sessionStorage.getItem('data')).userName;
+  } else {
+    userSessionName = null;
+  }
+  const userName = userSessionName || state.user.userName;
   return {
     userName
   };
@@ -32,9 +38,14 @@ const mapDispatchToProps = dispatch => {
     logoutClick: () => {
       dispatch(isUserLogin({}));
       dispatch(userLogin(''));
+      dispatch(receiveEmployeeSuccess([]));
+      sessionStorage.removeItem('data');
       toastr.success('Logout Success!');
     }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);

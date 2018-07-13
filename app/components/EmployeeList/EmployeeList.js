@@ -16,24 +16,16 @@ export default class EmployeeList extends Component {
   }
 
   componentDidMount() {
-    new window.Promise(() => {
-      this.props.getAll();
-    }).then(() => {
-      this.setState({
-        loading: false
-      });
-    });
+    this.props.getAll();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.employees.length == 0) {
-      this.setState({ loading: true });
-      window.setTimeout(() => {
-        this.setState({
-          loading: false
-        });
-      }, 2000);
-    }
+    this.setState({ loading: true });
+    window.setTimeout(() => {
+      this.setState({
+        loading: false
+      });
+    }, 2000);
   }
 
   render() {
@@ -47,7 +39,7 @@ export default class EmployeeList extends Component {
               <LeftMenu openKey={'List'} selectKey={'All'} />
               <Content>
                 <SearchBar />
-                {this.props.employees.length > 0 || !this.state.loading ? (
+                {!this.state.loading ? (
                   <EmployeeItem
                     employees={this.props.employees}
                     index={this.props.index}

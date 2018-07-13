@@ -6,11 +6,16 @@ import NotFound from '../NotFound/NotFound';
 import AddEmployee from '../AddEmployee/AddEmployee';
 import DataCharts from '../DataCharts/DataCharts';
 export default class RouteApp extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    if (sessionStorage.getItem('data')) {
+      this.props.getSessionUser();
+    }
   }
   render() {
-    return this.props.userName != '' ? (
+    return this.props.userName != '' || sessionStorage.getItem('data') ? (
       <div>
         <Switch>
           <Route exact path="/" component={EmployeeList} />
