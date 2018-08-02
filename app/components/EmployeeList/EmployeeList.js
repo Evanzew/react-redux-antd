@@ -17,6 +17,11 @@ export default class EmployeeList extends Component {
 
   componentDidMount() {
     this.props.getAll();
+    window.setTimeout(() => {
+      this.setState({
+        loading: false
+      });
+    }, 2000);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -27,7 +32,6 @@ export default class EmployeeList extends Component {
       });
     }, 2000);
   }
-
   render() {
     return (
       <Layout>

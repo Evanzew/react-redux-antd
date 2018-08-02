@@ -19,7 +19,7 @@ export default class AddEmployee extends Component {
             <NavTip title={'Charts'} />
             <Layout>
               <LeftMenu openKey={'Version'} selectKey={'Charts'} />
-              <Content style={{ padding: '0 24px' }}>
+              <Content style={{ padding: '0 24px', overflow: 'hidden' }}>
                 <DataPie />
               </Content>
             </Layout>

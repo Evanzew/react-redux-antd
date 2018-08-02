@@ -7,22 +7,18 @@
     "start": "node_modules/.bin/nodemon --exec better-npm-run startdev",
     "test": "mocha \"specs/**/*@(.js)\" --compilers js:babel-core/register",
     "clean": "rimraf dist",
-    "buildserver":
-      "rimraf serverDist && babel server -d serverDist -s --presets es2015,stage-3",
-    "startprod":
-      "rimraf dist && better-npm-run build:server:prod && better-npm-run build:web:prod && better-npm-run start:prod"
+    "buildserver": "rimraf serverDist && babel server -d serverDist -s --presets es2015,stage-3",
+    "startprod": "rimraf dist && better-npm-run build:server:prod && better-npm-run build:web:prod && better-npm-run start:prod"
   },
   "betterScripts": {
     "build:server:prod": {
-      "command":
-        "webpack --config webpack.config/server.config.js --progress --colors",
+      "command": "webpack --config webpack.config/server.config.js --progress --colors",
       "env": {
         "NODE_ENV": "production"
       }
     },
     "build:web:prod": {
-      "command":
-        "webpack --config webpack.config/web.prod.config.js --progress --colors",
+      "command": "webpack --config webpack.config/web.prod.config.js --progress --colors",
       "env": {
         "NODE_ENV": "production"
       }
@@ -44,7 +40,11 @@
     "type": "git",
     "url": "git+https://github.com/wssjq198913/AngularES6.git"
   },
-  "keywords": ["Rreact", "Redux", "ES6"],
+  "keywords": [
+    "Rreact",
+    "Redux",
+    "ES6"
+  ],
   "dependencies": {
     "@antv/data-set": "^0.8.9",
     "antd": "^3.5.2",
@@ -71,6 +71,7 @@
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
     "redux-saga": "^0.15.6",
+    "sass-loader": "^6.0.7",
     "serve-favicon": "~2.4.2",
     "viser-react": "2.2.6",
     "webpack-dev-middleware": "^1.11.0",
@@ -108,8 +109,8 @@
     "redux-form": "^7.0.3",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
+    "safe-regex": "^1.1.0",
     "sass": "^1.4.0",
-    "sass-loader": "^6.0.7",
     "style-loader": "^0.18.2",
     "toastr": "^2.1.2",
     "uglifyjs-webpack-plugin": "^0.4.6",

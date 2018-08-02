@@ -53,7 +53,7 @@ module.exports = {
     path: path.resolve('./dist'),
     filename: 'assets/js/[name].js',
     chunkFilename: 'assets/js/[id].js',
-    publicPath: '/'
+    publicPath: './'
 
     // deploy static files into server(IIS, CDN), then we need to set publicPath.
     // in below sample, they"er deployed to IIS.

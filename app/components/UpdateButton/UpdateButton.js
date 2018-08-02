@@ -35,7 +35,7 @@ class UpdateButton extends Component {
 
     return (
       <Fragment key={this.props.employee._id}>
-        <Button type="success" onClick={open}>
+        <Button type="default" onClick={open}>
           Update
         </Button>
         <UpdateModal
