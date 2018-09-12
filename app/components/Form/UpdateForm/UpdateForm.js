@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './UpdateForm.scss';
-import { Form, Icon, Input, Select } from 'antd';
+import { Form, Icon, Input, Select, DatePicker } from 'antd';
+import moment from 'moment';
 const FormItem = Form.Item;
 const Option = Select.Option;
 
@@ -10,10 +11,12 @@ class UpdateForm extends Component {
   }
   render() {
     const { getFieldDecorator } = this.props.form;
+    let beforeBirth = this.props.employee.Birth;
+    const dateFormat = 'YYYY/MM/DD';
     const prefixSelector = getFieldDecorator('prefix', {
       initialValue: '86'
     })(
-      <Select style={{ width: 70 }}>
+      <Select>
         <Option value="86">+86</Option>
         <Option value="87">+001</Option>
       </Select>
@@ -55,15 +58,21 @@ class UpdateForm extends Component {
             />
           )}
         </FormItem>
-        <FormItem>
+        <FormItem hasFeedback>
           {getFieldDecorator('Birth', {
-            initialValue: this.props.employee.Birth
-          })(
-            <Input
-              readOnly
-              prefix={
-                <Icon type="calendar" style={{ color: 'rgba(0,0,0,.25)' }} />
+            initialValue: moment(beforeBirth, dateFormat),
+            rules: [
+              {
+                type: 'object',
+                required: true,
+                message: 'Please select birth day!'
               }
+            ]
+          })(
+            <DatePicker
+              format="YYYY-MM-DD"
+              style={{ width: '100%' }}
+              placeholder="Select Birth"
             />
           )}
         </FormItem>
@@ -81,7 +90,7 @@ class UpdateForm extends Component {
           {getFieldDecorator('Phone', {
             initialValue: this.props.employee.Phone,
             rules: [
-              { required: true, message: 'Sorry,Phone is required' },
+              { required: true, message: 'Sorry,phone number is required' },
               {
                 pattern: /^([1]+[3,5,7,8]+\d{9}$)/,
                 message: 'Sorry,phone number is invalid'

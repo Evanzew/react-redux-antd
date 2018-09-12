@@ -38,11 +38,7 @@ class SearchBarForm extends Component {
           )}
         </FormItem>
         <FormItem>
-          <Button
-            type="primary"
-            htmlType="submit"
-            style={{ lineHeight: '40px', height: '40px' }}
-          >
+          <Button type="primary" htmlType="submit" style={{ marginTop: '4px' }}>
             Search
           </Button>
         </FormItem>

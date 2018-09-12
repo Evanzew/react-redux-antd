@@ -63,7 +63,7 @@ class CreateFormComponent extends Component {
     const prefixSelector = getFieldDecorator('prefix', {
       initialValue: '86'
     })(
-      <Select style={{ width: 70 }}>
+      <Select>
         <Option value="86">+86</Option>
         <Option value="87">+001</Option>
       </Select>
