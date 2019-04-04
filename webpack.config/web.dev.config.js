@@ -12,6 +12,7 @@ var myPlugins = [
   new htmlWebpackPlugin({
     template: '!!raw-loader!index.ejs',
     filename: 'index.ejs',
+    favicon: './app/assets/favicon.ico',
     alwaysWriteToDisk: true
   }),
   new htmlWebpackHarddiskPlugin(),

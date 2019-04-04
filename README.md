@@ -24,12 +24,12 @@ This is a employee system written by react , redux ,etc
 
 ## Build Setup
 
+> Node js version in my local enviorment is `10.15.0`.
+
 ```bash
-# install cnpm if you work in China.
-npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 # install dependencies
-cnpm install / npm instal
+npm install
 
 # serve with hot reload at localhost:8080
 npm start
