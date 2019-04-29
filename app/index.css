@@ -41,6 +41,8 @@ ul {
 
 .strline {
   border-right: 1px solid #707070;
+  padding-right: 8px;
+  margin-right: 4px;
 }
 
 .display-line {
