@@ -32,8 +32,8 @@ class SearchBarForm extends Component {
             initialValue: 'First_Name'
           })(
             <Select style={{ width: '200px' }}>
-              <Option value="First_Name">FirstName</Option>
-              <Option value="Last_Name">LastName</Option>
+              <Option value="First_Name">First Name</Option>
+              <Option value="Last_Name">Last Name</Option>
             </Select>
           )}
         </FormItem>
