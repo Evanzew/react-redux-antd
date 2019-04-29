@@ -2,9 +2,17 @@
 
 This is a employee system written by react , redux ,etc
 
-## Database Structure
+## Database Structure (数据库结构)
 
-> Employee structure
+> Database structure
+
+- Vue
+  - Emplpyee
+  - User
+
+![alt text](/app/assets/Database-structure.jpg 'Database structure')
+
+> Employee structure(Employee 表结构)
 
 ```bash
   "First_Name" : "xx",
@@ -15,11 +23,11 @@ This is a employee system written by react , redux ,etc
   "Phone" : NumberLong(111111111111)
 ```
 
-> User structure
+> User structure(User 表结构)
 
 ```bash
-  "User_Name" : "evan.zou",
-  "Password" : "1"
+  "User_Name" : "Evan.Zou",
+  "Password" : "123"
 ```
 
 ## Build Setup
