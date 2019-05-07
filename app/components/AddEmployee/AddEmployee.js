@@ -5,6 +5,8 @@ import CreateForm from '../../containers/CreateForm/CreateForm';
 import LeftMenu from '../../components/LeftMenu/LeftMenu.js';
 import { Layout } from 'antd';
 const { Content } = Layout;
+
+//创建新员工页面，调用了Creteform和Header组件。
 export default class AddEmployee extends Component {
   constructor() {
     super();

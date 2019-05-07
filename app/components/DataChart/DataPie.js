@@ -7,6 +7,7 @@ export default class DataPie extends React.Component {
   render() {
     let filters = 'Gender';
     const sourceData = [
+      //根据三目运算，如果famle或者male没有数据则给一个mock的数据。
       {
         item: 'Famale',
         count:

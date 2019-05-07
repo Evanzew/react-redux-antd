@@ -3,6 +3,8 @@ const { SubMenu } = Menu;
 const { Sider } = Layout;
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
+//左侧导航栏，根据openKey和selectKey来控制。
 export default class LeftMenu extends Component {
   constructor() {
     super();
@@ -21,7 +23,8 @@ export default class LeftMenu extends Component {
             key="List"
             title={
               <span>
-                <Icon type="user" />List
+                <Icon type="user" />
+                List
               </span>
             }
           >
@@ -33,7 +36,8 @@ export default class LeftMenu extends Component {
             key="Version"
             title={
               <span>
-                <Icon type="laptop" />Version
+                <Icon type="laptop" />
+                Version
               </span>
             }
           >
@@ -45,7 +49,8 @@ export default class LeftMenu extends Component {
             key="Action"
             title={
               <span>
-                <Icon type="laptop" />Action
+                <Icon type="laptop" />
+                Action
               </span>
             }
           >

@@ -5,6 +5,8 @@ import Login from '../../containers/Login/Login';
 import NotFound from '../NotFound/NotFound';
 import AddEmployee from '../AddEmployee/AddEmployee';
 import DataCharts from '../DataCharts/DataCharts';
+
+//集成route的地方，首先判断是否登录，如果未登录的话会先跳转到登录页面即login页面。
 export default class RouteApp extends Component {
   constructor(props) {
     super(props);

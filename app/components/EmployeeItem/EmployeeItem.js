@@ -6,6 +6,7 @@ import UpdateButton from '../../containers/UpdateButton/UpdateButton';
 import { Button, Col, Table } from 'antd';
 const ButtonGroup = Button.Group;
 
+//员工信息table，并分页。
 class EmployeeItem extends Component {
   constructor() {
     super();

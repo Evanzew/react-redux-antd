@@ -4,12 +4,14 @@ import * as toastr from 'toastr';
 import 'toastr/build/toastr.css';
 import { Popconfirm, Button } from 'antd';
 
+//删除按钮，在删除前会弹出一个confirm的提示框。
 export default class DeleteButton extends Component {
   constructor(props) {
     super(props);
   }
   render() {
     function confirm() {
+      //删除成功会在右上角显示提示。
       toastr.error('Employee Successfully Deleted!', 'Deleted');
     }
     const text =

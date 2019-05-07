@@ -4,6 +4,7 @@ import { Modal, Button } from 'antd';
 import 'toastr/build/toastr.css';
 import UpdateForm from '../Form/UpdateForm/UpdateForm';
 let employeeFormValue;
+//点击update的时候弹出的模态框。
 class UpdateModal extends Component {
   constructor(props) {
     super(props);

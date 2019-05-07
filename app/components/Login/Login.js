@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { Col, Row } from 'antd';
 import LoginForm from '../Form/LoginForm/LoginForm';
 
+//登录页面。
 export default class Login extends Component {
   constructor() {
     super();

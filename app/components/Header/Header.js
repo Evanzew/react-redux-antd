@@ -6,6 +6,8 @@ import './Header.scss';
 import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
 const { Header } = Layout;
+
+//每个页面的头部，根据current来显示是否为当前页面。
 export default class HeaderComponent extends Component {
   constructor() {
     super();

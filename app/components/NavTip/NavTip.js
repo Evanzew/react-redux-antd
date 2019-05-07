@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Breadcrumb } from 'antd';
+//每个页面header和内容之间的tip，用来提示当前页面。
 export default class NavTip extends Component {
   constructor() {
     super();

@@ -5,6 +5,7 @@ import * as toastr from 'toastr';
 import UpdateModal from '../UpdateModal/UpdateModal';
 import { Button } from 'antd';
 
+//员工信息的operation下的update button。
 class UpdateButton extends Component {
   constructor(props) {
     super(props);

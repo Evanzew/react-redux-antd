@@ -9,6 +9,8 @@ import './EmployeeList.scss';
 import PropTypes from 'prop-types';
 import { Layout, Spin } from 'antd';
 const { Content } = Layout;
+
+//员工信息的页面。
 export default class EmployeeList extends Component {
   constructor(props) {
     super(props);

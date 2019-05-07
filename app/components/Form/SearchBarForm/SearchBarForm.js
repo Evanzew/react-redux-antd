@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Form, Input, Select, Button } from 'antd';
 const FormItem = Form.Item;
 const Option = Select.Option;
+
+//是在员工list上面的搜索员工信息的form。
 class SearchBarForm extends Component {
   constructor() {
     super();

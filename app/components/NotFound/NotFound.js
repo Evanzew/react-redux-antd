@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+//404 NotFound页面。
 export default class NotFound extends Component {
   constructor() {
     super();

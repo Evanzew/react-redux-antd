@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import './LoginForm.scss';
 import { Form, Input, Button } from 'antd';
 const FromItem = Form.Item;
+
+//登录form。
 class LoginForm extends Component {
   constructor() {
     super();

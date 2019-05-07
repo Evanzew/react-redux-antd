@@ -14,7 +14,8 @@ import {
 import './CreateForm.scss';
 const FormItem = Form.Item;
 const Option = Select.Option;
-
+//为了清楚的管理各个form，建立了不同的form的组件。
+//创建新员工的form。
 class CreateFormComponent extends Component {
   constructor() {
     super();

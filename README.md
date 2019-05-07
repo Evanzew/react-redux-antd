@@ -2,6 +2,8 @@
 
 This is a employee system written by react , redux ,etc
 
+# 我会写一些备注，方便大家理解
+
 ## Database Structure (数据库结构)
 
 > Database structure

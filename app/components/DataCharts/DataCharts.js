@@ -5,6 +5,8 @@ import LeftMenu from '../../components/LeftMenu/LeftMenu.js';
 import DataPie from '../../containers/DataCharts/DataPie';
 import { Layout } from 'antd';
 const { Content } = Layout;
+
+//数据图形页面，调用datepie组件。
 export default class AddEmployee extends Component {
   constructor() {
     super();
