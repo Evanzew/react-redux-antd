@@ -1,8 +1,8 @@
-# react-redux-employee-system
+# react-redux-antd-employee-system
 
-This is a employee system written by react , redux ,etc
-
-# 我会写一些备注，方便大家理解
+- This is an employee system designed by atnd, react , redux ,etc. And this is my first react self-learning project, please forgive me if there is anything wrong.
+- (At the beginning, this system was designed by react-bootstrap. Now, it has been rebuild by atnd. I can provide the previous version if needed.)
+- I will write some comments for you to understand this system.
 
 ## Database Structure (数据库结构)
 
@@ -34,7 +34,7 @@ This is a employee system written by react , redux ,etc
 
 ## Build Setup
 
-> Node js version in my local enviorment is `10.15.0`.
+> Node.js version in my local enviorment is `10.15.0`.
 
 ```bash
 
