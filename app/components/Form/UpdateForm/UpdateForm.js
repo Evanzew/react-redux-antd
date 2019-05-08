@@ -15,11 +15,11 @@ class UpdateForm extends Component {
     let beforeBirth = this.props.employee.Birth;
     const dateFormat = 'YYYY/MM/DD';
     const prefixSelector = getFieldDecorator('prefix', {
-      initialValue: '86'
+      initialValue: this.props.employee.prefix
     })(
       <Select>
         <Option value="86">+86</Option>
-        <Option value="87">+001</Option>
+        <Option value="001">+001</Option>
       </Select>
     );
     return (

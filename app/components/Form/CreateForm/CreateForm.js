@@ -61,12 +61,13 @@ class CreateFormComponent extends Component {
         visible: false
       });
     };
+    // TODO(Evan):把perfixselector添加到数据库。
     const prefixSelector = getFieldDecorator('prefix', {
       initialValue: '86'
     })(
       <Select>
         <Option value="86">+86</Option>
-        <Option value="87">+001</Option>
+        <Option value="001">+001</Option>
       </Select>
     );
 

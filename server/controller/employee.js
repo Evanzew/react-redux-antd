@@ -4,6 +4,18 @@ var errorEnum = require('../enum/ErrorEnum.js');
 var resultJson = require('../config/resultJson.js');
 const util = require('util');
 var dbconfig = require('../config/dbconfig');
+const voList = [
+  '_id',
+  'id',
+  'First_Name',
+  'Last_Name',
+  'Gender',
+  'Birth',
+  'Address',
+  'Phone',
+  'prefix'
+];
+
 module.exports = {
   getAllEmployees: function(req, res) {
     db.findData('Employee', {}, function(err, data) {
@@ -16,16 +28,6 @@ module.exports = {
         );
         return;
       }
-      var voList = [
-        '_id',
-        'id',
-        'First_Name',
-        'Last_Name',
-        'Gender',
-        'Birth',
-        'Address',
-        'Phone'
-      ];
       var result = convertDBDataToVo(data, voList);
       res.json(resultJson.createDataResult(result));
     });
@@ -37,16 +39,6 @@ module.exports = {
       data[req.body.option] = { $regex: req.body.content };
     }
     db.findData('Employee', data, function(err, data) {
-      var voList = [
-        '_id',
-        'id',
-        'First_Name',
-        'Last_Name',
-        'Gender',
-        'Birth',
-        'Address',
-        'Phone'
-      ];
       var result = convertDBDataToVo(data, voList);
       res.json(resultJson.createDataResult(result));
     });
@@ -80,7 +72,8 @@ module.exports = {
       Gender: req.body.Gender,
       Birth: req.body.Birth,
       Address: req.body.Address,
-      Phone: parseInt(req.body.Phone)
+      Phone: parseInt(req.body.Phone),
+      prefix: req.body.prefix
     };
     db.insertOne('Employee', data, function(err, result) {
       res.json(resultJson.createDataResult(result.insertedcourt));
