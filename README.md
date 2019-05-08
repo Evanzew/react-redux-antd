@@ -22,7 +22,8 @@
   "Gender" : "M",
   "Birth" : "YYYY-MM-DD",
   "Address" : "XX",
-  "Phone" : NumberLong(111111111111)
+  "Phone" : NumberLong(111111111111),
+  'prefix':'86'
 ```
 
 > User structure(User 表结构)
