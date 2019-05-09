@@ -5,7 +5,7 @@ import {
   SEARCH_EMP_BY_OPTION
 } from '../actions/employeeAction';
 export function* findAsync(option, content) {
-  var data = {
+  let data = {
     option: option,
     content: content
   };

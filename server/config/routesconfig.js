@@ -1,4 +1,4 @@
-var routesconfig = {
+const routesconfig = {
   //employee
   get_all_employee_url: '/v1/employees',
   delete_employee_url: '/v1/delEmployee',

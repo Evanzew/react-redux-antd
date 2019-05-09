@@ -27,7 +27,7 @@ let initialEmployee = {
 };
 
 let sort_by = function(field, reverse, primer) {
-  var key = primer
+  let key = primer
     ? function(x) {
         return primer(x[field]);
       }
@@ -44,7 +44,7 @@ let sort_by = function(field, reverse, primer) {
 
 const concatList = (id, list) => {
   let index = 0;
-  for (var key in list) {
+  for (let key in list) {
     if (list[key]._id == id) {
       index = parseInt(key);
     }
@@ -55,7 +55,7 @@ const concatList = (id, list) => {
 
 const updateList = (data, list) => {
   let index = 0;
-  for (var key in list) {
+  for (let key in list) {
     if (list[key]._id == data._id) {
       index = parseInt(key);
     }
@@ -69,7 +69,7 @@ const updateList = (data, list) => {
 };
 
 function searchJson(option, content) {
-  var json = {};
+  let json = {};
   json[option] = content;
   return json;
 }

@@ -34,11 +34,14 @@ const mapDispatchToProps = dispatch => {
       console.log(employee.length);
       dispatch(deleteEmployee(id));
       if (employee.length - 1 == 0) {
-        var currentIndex = index - 1;
+        let currentIndex = index - 1;
         dispatch(pageNationEmployee(currentIndex));
       }
     }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeleteButton);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DeleteButton);
