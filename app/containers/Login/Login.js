@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { isUserLogin } from '../../actions/loginAction';
 import { searchEmpByOption } from '../../actions/employeeAction';
 import LoginComponent from '../../components/Login/Login';
-import * as toastr from 'toastr';
+// import * as toastr from 'toastr';
 
 class Login extends Component {
   constructor() {
@@ -29,7 +29,6 @@ const mapDispatchToProps = dispatch => {
     loginClick: data => {
       dispatch(isUserLogin(data));
       dispatch(searchEmpByOption('First_Name', ''));
-      toastr.success('Login successfully!');
     }
   };
 };

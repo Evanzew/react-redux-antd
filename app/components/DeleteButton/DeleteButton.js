@@ -12,7 +12,7 @@ export default class DeleteButton extends Component {
   render() {
     function confirm() {
       //删除成功会在右上角显示提示。
-      toastr.error('Employee Successfully Deleted!', 'Deleted');
+      toastr.error('Employee Delete!', 'Deleted');
     }
     const text =
       'Please confirm whether you really want to delete this employee!!';

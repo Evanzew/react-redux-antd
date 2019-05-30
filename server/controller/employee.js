@@ -35,7 +35,7 @@ module.exports = {
 
   getEmpByOption: function(req, res) {
     var data = {};
-    if (req.body.content != '') {
+    if (req.body.content) {
       data[req.body.option] = { $regex: req.body.content };
     }
     db.findData('Employee', data, function(err, data) {

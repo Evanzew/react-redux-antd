@@ -5,14 +5,15 @@ import { userLogin, IS_USER_LOGIN } from '../actions/loginAction';
 toastr.options.closeButton = true;
 export function* loginAsync(data) {
   try {
-    if (data.userName !== undefined) {
+    if (data.userName) {
       let result = yield call(fetchRequest, '/api/v1/login', 'POST', data);
       if (result.code == 200) {
         yield put(userLogin(result.data.User_Name));
         let dataJson = JSON.stringify(data);
         sessionStorage.setItem('data', dataJson);
+        toastr.success('Login Successful!');
       } else {
-        toastr.error('UserName or Password error!');
+        toastr.error('UserName or Password is wrong!');
       }
     }
   } catch (error) {

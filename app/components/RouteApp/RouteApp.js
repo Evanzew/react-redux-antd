@@ -17,7 +17,7 @@ export default class RouteApp extends Component {
     }
   }
   render() {
-    return this.props.userName != '' || sessionStorage.getItem('data') ? (
+    return this.props.userName || sessionStorage.getItem('data') ? (
       <div>
         <Switch>
           <Route exact path="/" component={EmployeeList} />
