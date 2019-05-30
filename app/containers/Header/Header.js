@@ -22,12 +22,10 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => {
-  let userSessionName;
-  if (sessionStorage.getItem('data')) {
-    userSessionName = JSON.parse(sessionStorage.getItem('data')).userName;
-  } else {
-    userSessionName = null;
-  }
+  let userSessionName = sessionStorage.getItem('data')
+    ? JSON.parse(sessionStorage.getItem('data')).userName
+    : null;
+
   const userName = userSessionName || state.user.userName;
   return {
     userName

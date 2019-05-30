@@ -21,20 +21,13 @@ class EmployeeItem extends Component {
         filteredInfo: filters,
         sortedInfo: sorter
       });
-      if (sorter.columnKey === 'First_Name') {
-        if (sorter.order == 'ascend') {
-          this.props.sortByFN(true);
-        } else {
-          this.props.sortByFN(false);
-        }
-      }
-      if (sorter.columnKey === 'Last_Name') {
-        if (sorter.order == 'ascend') {
-          this.props.sortByLN(true);
-        } else {
-          this.props.sortByLN(false);
-        }
-      }
+      sorter.columnKey === 'First_Name'
+        ? sorter.order == 'ascend'
+          ? this.props.sortByFN(true)
+          : this.props.sortByFN(false)
+        : sorter.order == 'ascend'
+        ? this.props.sortByLN(true)
+        : this.props.sortByLN(false);
     };
     let pagination = {
       pageSize: 5,

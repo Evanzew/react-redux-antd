@@ -30,11 +30,7 @@ class CreateFormComponent extends Component {
     const rowGutter = { xs: 8, sm: 16, md: 24, lg: 32 };
     const showModal = () => {
       this.props.form.validateFields(err => {
-        if (!err) {
-          this.setState({
-            visible: true
-          });
-        }
+        !err ? this.setState({ visible: true }) : null;
       });
     };
     const handleSubmit = e => {
