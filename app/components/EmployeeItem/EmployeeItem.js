@@ -43,6 +43,7 @@ class EmployeeItem extends Component {
         title: 'First Name',
         dataIndex: 'First_Name',
         key: 'First_Name',
+        width: 140,
         sorter: (a, b) => {
           a.First_Name - b.First_Name;
         }
@@ -51,6 +52,7 @@ class EmployeeItem extends Component {
         title: 'Last Name',
         dataIndex: 'Last_Name',
         key: 'Last_Name',
+        width: 140,
         sorter: (a, b) => {
           a.Last_Name - b.Last_Name;
         }
@@ -58,12 +60,14 @@ class EmployeeItem extends Component {
       {
         title: 'Gender',
         dataIndex: 'Gender',
-        key: 'Gender'
+        key: 'Gender',
+        width: 100
       },
       {
         title: 'Birth',
         dataIndex: 'Birth',
-        key: 'Birth'
+        key: 'Birth',
+        width: 130
       },
       {
         title: 'Address',
@@ -73,12 +77,14 @@ class EmployeeItem extends Component {
       {
         title: 'Phone',
         dataIndex: 'Phone',
-        key: 'Phone'
+        key: 'Phone',
+        width: 150
       },
       {
         title: 'Operation',
         key: 'Operation',
         dataIndex: 'Operation',
+        width: 200,
         render: (text, record) => (
           <ButtonGroup>
             <DeleteButton id={record._id} />
