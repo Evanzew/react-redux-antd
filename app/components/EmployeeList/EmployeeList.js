@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import 'babel-polyfill';
 import EmployeeItem from '../EmployeeItem/EmployeeItem';
 import SearchBar from '../../containers/SearchBar/SearchBar';
-import NavTip from '../NavTip/NavTip';
-import LeftMenu from '../../components/LeftMenu/LeftMenu.js';
-import Header from '../../containers/Header/Header';
 import './EmployeeList.scss';
 import PropTypes from 'prop-types';
-import { Layout, Spin } from 'antd';
-const { Content } = Layout;
+import { Spin } from 'antd';
+
+import SliderLayout from '../SliderLayout/SliderLayout';
 
 //员工信息的页面。
 export default class EmployeeList extends Component {
@@ -19,51 +17,41 @@ export default class EmployeeList extends Component {
 
   componentDidMount() {
     this.props.getAll();
-    window.setTimeout(() => {
+    this.loadingState = window.setTimeout(() => {
       this.setState({
         loading: false
       });
     }, 2000);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ loading: true });
-    window.setTimeout(() => {
-      this.setState({
-        loading: false
-      });
-    }, 2000);
+  componentWillUnmount() {
+    clearInterval(this.loadingState);
   }
+
   render() {
     return (
-      <Layout>
-        <Header current={'List'} />
-        <Layout style={{ padding: '0 24px 24px' }}>
-          <Content style={{ padding: '0 24px 24px' }} className="container">
-            <NavTip title={'EmployeeList'} />
-            <Layout style={{ background: '#fff' }}>
-              <LeftMenu openKey={'List'} selectKey={'All'} />
-              <Content>
-                <SearchBar />
-                {!this.state.loading ? (
-                  <EmployeeItem
-                    employees={this.props.employees}
-                    index={this.props.index}
-                    pages={this.props.pages}
-                    changeIndex={this.props.changeIndex}
-                    sortByFN={this.props.sortByFN}
-                    sortByLN={this.props.sortByLN}
-                  />
-                ) : (
-                  <div className="loadingContext">
-                    <Spin spinning={this.state.loading} />
-                  </div>
-                )}
-              </Content>
-            </Layout>
-          </Content>
-        </Layout>
-      </Layout>
+      <SliderLayout
+        current={'List'}
+        title={'EmployeeList'}
+        openKey={'List'}
+        selectKey={'All'}
+      >
+        <SearchBar />
+        {!this.state.loading ? (
+          <EmployeeItem
+            employees={this.props.employees}
+            index={this.props.index}
+            pages={this.props.pages}
+            changeIndex={this.props.changeIndex}
+            sortByFN={this.props.sortByFN}
+            sortByLN={this.props.sortByLN}
+          />
+        ) : (
+          <div className="loadingContext">
+            <Spin spinning={this.state.loading} />
+          </div>
+        )}
+      </SliderLayout>
     );
   }
 }
