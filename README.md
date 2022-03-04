@@ -45,25 +45,3 @@ npm install
 # serve with hot reload at localhost:8080
 npm start
 ```
-
-## Demo Preview
-
-> Home Page Preview
-
-![alt text](/app/assets/preview-home.jpg 'Home page preview')
-
-> Create Page Preview
-
-![alt text](/app/assets/preview-new.jpg 'Create page preview')
-
-> Login Page Preview
-
-![alt text](/app/assets/preview-login.jpg 'Login page preview')
-
-> Update Employee priview
-
-![alt text](/app/assets/preview-update.jpg 'Update page preview')
-
-> Charts Page priview
-
-![alt text](/app/assets/preview-chart.jpg 'Charts page preview')

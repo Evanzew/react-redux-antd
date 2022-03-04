@@ -14,13 +14,11 @@ export default class Login extends Component {
     return this.props.userName == '' ? (
       <div>
         <Col className="text-center xs-margin">
-          <img src={require('../../assets/perficient-logo.png')} />
         </Col>
         <div className="login-container">
           <Row>
             <Col className="hidden-xs text-center" md={12} sm={12}>
               <img
-                src={require('../../assets/log_right.png')}
                 className="login-img"
               />
             </Col>
