@@ -100,7 +100,7 @@
     "html-webpack-harddisk-plugin": "^0.1.0",
     "html-webpack-plugin": "^2.29.0",
     "jquery": "^3.2.1",
-    "mocha": "^3.5.0",
+    "mocha": "^10.2.0",
     "mongodb": "^2.2.31",
     "node-sass": "4.9.3",
     "nodemon": "^1.11.0",
